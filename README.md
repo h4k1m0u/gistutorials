@@ -21,14 +21,15 @@
 - **Create a new user**: `CREATE USER <username>;`
 - **Create a database**: `CREATE DATABASE <database> OWNER <username>;`
 - **Install python adapter**: `pacman -S python-psycopg2`
-- **Configure Django**: `vim myquotes/settings.py`
+- **Configure Django**: `vim <project>/settings.py`
+
 And insert the following:
 ```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myquotes',
-        'USER': 'hakim',
+        'NAME': '<database>',
+        'USER': '<database-user>',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
@@ -40,18 +41,48 @@ DATABASES = {
 
 ## Create a new app
 - **Create an app:** `python manage.py startapp <app>`
-- **Install app:** `vim myquotes/settings.py`
+- **Install app:** `vim <project>/settings.py`
+
 And insert the following:
 ```python
 INSTALLED_APPS = {
-    'quotes.apps.QuotesConfig',
+    '<app>.apps.QuotesConfig',
     ...
 }
 ```
-- **Create the models classes:** Add models' classes to `quotes/models.py`
+- **Create the models classes:** Add models' classes to `<app>/models.py`
 - **Create app migrations:** `python manage.py makemigrations <app>`
 - **View app migrations:** `python manage.py sqlmigrate <app> <migration>`
 - **Create app's tables:** `python manage.py migrate`
+
+## Edit database tables from admin
+- **Add models to admin:** `vim <app>/admin.py`
+
+And add:
+```python
+admin.site.register(<model>)
+```
+
+## Creating new views:
+- **Create the views classes:** Add views' classes to `<app>/views.py`
+- **Add url route in app's urls:**: `vim <app>/urls.py`
+
+And add the following line to `urlpatterns`:
+```python
+urlpatterns = [
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    ...
+]
+```
+- **Include the app's urls in main urls**: `vim <project>/urls.py`
+
+And add the following line to `urlpatterns`:
+```python
+urlpatterns = [
+    url(r'^<app>/', include('<app>.urls')),
+    ...
+]
+```
 
 ## Useful shell tools
 - **Run unit-tests:** `python manage.py test <app>`
