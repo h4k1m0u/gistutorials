@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'djangobower',
     'quotes.apps.QuotesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -123,3 +124,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Hakim
+# Where django looks for static files
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
+
+
+# Hakim
+# Where bower installs the components
+
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+
+
+# Hakim
+# Apps to install with bower
+
+BOWER_INSTALLED_APPS = (
+    'foundation-sites',
+)

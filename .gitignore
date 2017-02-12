@@ -1,5 +1,6 @@
-# hakim: Vim
+# Hakim
 *.swp
+components
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

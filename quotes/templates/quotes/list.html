@@ -4,13 +4,13 @@
 
 {% block content %}
     {% if quotes %}
-        <ul>
+        <div class="row large-up-4">
             {% for quote in quotes %}
-                <li>
+                <div class="column column-block">
                     <a href="{% url 'quotes:detail' quote.id %}">{{ quote.text }} from {{ quote.book.title }}</a>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
         <p>No quotes.</p>
     {% endif %}

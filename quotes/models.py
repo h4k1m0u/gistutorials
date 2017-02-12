@@ -30,6 +30,7 @@ class Book(models.Model):
     isbn = models.CharField(max_length=10)
 
     # foreign keys
+    # can be empty: null in database & blank in forms
     author = models.ForeignKey(Author, null=True, blank=True,
                                on_delete=models.CASCADE)
 
@@ -49,7 +50,7 @@ class Quote(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     # foreign keys
-    # null for database & blank for forms
+    # can be empty: null in database & blank in forms
     book = models.ForeignKey(Book, null=True, blank=True,
                              on_delete=models.CASCADE)
     author = models.ForeignKey(Author, null=True, blank=True,

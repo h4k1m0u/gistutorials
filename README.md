@@ -84,5 +84,57 @@ urlpatterns = [
 ]
 ```
 
+## Install foundation with bower
+- **Install nodejs package manager:** `pacman -S npm`
+- **Install bower:** `npm install -g bower`
+- **Install bower python module:** `pip install django-bower`
+- **Edit settings.py:** `vim <project>/settings.py`
+
+  - **Add bower to django apps:**
+
+```python
+INSTALLED_APPS = {
+    'djangobower',
+    ...
+}
+```
+
+  - **Set where django looks for statis files:**
+
+```python
+STATICFILES_FINDERS = (
+    'djangobower.finders.BowerFinder',
+    ...
+)
+```
+
+  - **Set where bower installs the components:**
+
+```python
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+```
+
+  - **Apps to install with bower:**
+
+```python
+BOWER_INSTALLED_APPS = (
+    'foundation-sites',
+)
+```
+
+- **Install the components:** `python manage.py bower install`
+
+## Compile SASS to CSS with pipeline
+- **Install pipeline python module:** `pip install django-pipeline`
+- **Add pipeline to django apps:** `vim <project>/settings.py`
+
+And insert the following:
+```python
+INSTALLED_APPS = {
+    'pipeline',
+    ...
+}
+```
+
 ## Useful shell tools
 - **Run unit-tests:** `python manage.py test <app>`

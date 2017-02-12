@@ -5,7 +5,7 @@ from .models import Quote, Book, Author
 # customize admin views
 class QuoteAdmin(admin.ModelAdmin):
     # fields to show in admin listview
-    list_display = ('text', 'author', 'book')
+    list_display = ('text', 'author', 'book', 'date')
 
 
 class BookAdmin(admin.ModelAdmin):
