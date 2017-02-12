@@ -1,1 +1,7 @@
-<h1>{{ quote.text }} from {{ quote.book.title }}</h1>
+{% extends 'quotes/base.html' %}
+
+{% block title %}Quotes detail{% endblock %}
+
+{% block content %}
+    <h1>{{ quote.text }} from {{ quote.book.title }}</h1>
+{% endblock %}

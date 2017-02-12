@@ -7,6 +7,9 @@ class Person(models.Model):
     class Meta:
         abstract = True
 
+        # order of drop-down list items
+        ordering = ('name',)
+
 
 class Author(Person):
     def __str__(self):
@@ -36,6 +39,10 @@ class Book(models.Model):
         """
         return self.title
 
+    class Meta:
+        # order of drop-down list items
+        ordering = ('title',)
+
 
 class Quote(models.Model):
     text = models.CharField(max_length=1000)
@@ -53,3 +60,7 @@ class Quote(models.Model):
             Field to show in the admin site.
         """
         return self.text
+
+    class Meta:
+        # order of drop-down list items
+        ordering = ('text',)

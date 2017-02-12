@@ -1,0 +1,17 @@
+{% extends 'quotes/base.html' %}
+
+{% block title %}Quotes list{% endblock %}
+
+{% block content %}
+    {% if quotes %}
+        <ul>
+            {% for quote in quotes %}
+                <li>
+                    <a href="{% url 'quotes:detail' quote.id %}">{{ quote.text }} from {{ quote.book.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No quotes.</p>
+    {% endif %}
+{% endblock %}
