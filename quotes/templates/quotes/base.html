@@ -1,11 +1,13 @@
 {% load static %}
+{% load pipeline %}
 
  <!DOCTYPE html>
  <html>
      <head>
          <meta charset="UTF-8">
          <title>{% block title %}My quotes{% endblock %}</title>
-         <link rel="stylesheet" href="{% static "quotes/foundation.min.css" %}" />
+         {% stylesheet 'style' %}
+         {% javascript 'script' %}
      </head>
 
      <body>
@@ -21,8 +23,6 @@
              </div>
          </div>
 
-         <script type="text/javascript" src="{% static "jquery/jquery.js" %}"></script>
-         <script type="text/javascript" src="{% static "quotes/foundation.min.js" %}"></script>
          <script type="text/javascript">
              $(document).foundation();
          </script>

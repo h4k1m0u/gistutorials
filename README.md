@@ -99,7 +99,7 @@ INSTALLED_APPS = {
 }
 ```
 
-  - **Set where django looks for statis files:**
+  - **Set finder to look for static files:**
 
 ```python
 STATICFILES_FINDERS = (
@@ -108,10 +108,10 @@ STATICFILES_FINDERS = (
 )
 ```
 
-  - **Set where bower installs the components:**
+  - **Set where bower installs the downloaded components:**
 
 ```python
-BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+BOWER_COMPONENTS_ROOT = BASE_DIR
 ```
 
   - **Apps to install with bower:**
@@ -124,16 +124,81 @@ BOWER_INSTALLED_APPS = (
 
 - **Install the components:** `python manage.py bower install`
 
-## Compile SASS to CSS with pipeline
-- **Install pipeline python module:** `pip install django-pipeline`
-- **Add pipeline to django apps:** `vim <project>/settings.py`
+# Compile SCSS to CSS with pipeline
+- **Install ruby and gem:** `pacman -S ruby`
+- **Install sass:** `gem install sass`
+- **Add gem folder to path:** `vim ~/.bashrc`
 
-And insert the following:
+And add the following:
+```sh
+export PATH=$PATH:/home/hakim/.gem/ruby/2.4.0/bin:
+```
+
+- **Install pipeline python module:** `pip install django-pipeline`
+- **Edit settings.py:** `vim <project>/settings.py`
+
+  - **Add pipeline to django apps:**
+
 ```python
 INSTALLED_APPS = {
     'pipeline',
     ...
 }
+```
+
+  - **Set finder to look for static files:**
+
+```python
+STATICFILES_FINDERS = (
+    'pipeline.finders.PipelineFinder',
+    ...
+)
+```
+
+  - **Set where to generate CSS from SCSS:**
+
+```python
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+```
+
+  - **Specify SCSS files to compile to CSS:**
+
+```python
+PIPELINE = {
+    'STYLESHEETS': {
+        'style': {
+            'source_filenames': (
+                'style.scss',
+            ),
+            'output_filename': 'style.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'script': {
+            'source_filenames': (
+                'jquery/dist/jquery.min.js',
+                'foundation-sites/dist/js/foundation.min.js',
+            ),
+            'output_filename': 'script.js',
+        },
+    },
+    'COMPILERS': (
+        'pipeline.compilers.sass.SASSCompiler',
+    ),
+    'SASS_ARGUMENTS': "-I '%s'" % os.path.join(
+        'foundation-sites',
+        'scss'
+    )
+}
+```
+
+  - **Import foundation in your custom SCSS:**
+
+```sass
+@import 'foundation-sites/scss/settings/_settings.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
+@include foundation-everything;
 ```
 
 ## Useful shell tools

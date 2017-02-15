@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pipeline',
     'djangobower',
     'quotes.apps.QuotesConfig',
     'django.contrib.admin',
@@ -125,26 +126,62 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+###############################################################################
+# Hakim: Configure plugins
+###############################################################################
 
-# Hakim
-# Where django looks for static files
+
+# Where to generate CSS from SCSS
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Where django, bower, pipeline look for static files
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'djangobower.finders.BowerFinder',
+    'pipeline.finders.PipelineFinder',
 )
 
 
-# Hakim
 # Where bower installs the components
 
-BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+BOWER_COMPONENTS_ROOT = BASE_DIR
 
 
-# Hakim
 # Apps to install with bower
 
 BOWER_INSTALLED_APPS = (
     'foundation-sites',
 )
+
+
+# Pass foundation through pipeline
+
+PIPELINE = {
+    'STYLESHEETS': {
+        'style': {
+            'source_filenames': (
+                'style.scss',
+            ),
+            'output_filename': 'style.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'script': {
+            'source_filenames': (
+                'jquery/dist/jquery.min.js',
+                'foundation-sites/dist/js/foundation.min.js',
+            ),
+            'output_filename': 'script.js',
+        },
+    },
+    'COMPILERS': (
+        'pipeline.compilers.sass.SASSCompiler',
+    ),
+    'SASS_ARGUMENTS': "-I '%s'" % os.path.join(
+        'foundation-sites',
+        'scss'
+    )
+}

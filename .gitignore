@@ -1,6 +1,6 @@
 # Hakim
 *.swp
-components
+bower_components
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
