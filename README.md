@@ -155,16 +155,31 @@ STATICFILES_FINDERS = (
 )
 ```
 
-  - **Set where to generate CSS from SCSS:**
+  - **Set pipeline static assets storage:**
 
 ```python
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+```
+
+  - **Set where to generate static assets with collectstatic:**
+
+```python
+STATICFILES_ROOT = os.path.join(BASE_DIR, 'static')
+```
+
+  - **Set where django looks for static assets:**
+
+```python
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
 ```
 
   - **Specify SCSS files to compile to CSS:**
 
 ```python
 PIPELINE = {
+    'PIPELINE_ENABLED': True,
     'STYLESHEETS': {
         'style': {
             'source_filenames': (
@@ -182,6 +197,7 @@ PIPELINE = {
             'output_filename': 'script.js',
         },
     },
+    'JS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
     'COMPILERS': (
         'pipeline.compilers.sass.SASSCompiler',
     ),
@@ -192,7 +208,7 @@ PIPELINE = {
 }
 ```
 
-  - **Import foundation in your custom SCSS:**
+  - **Import foundation in your custom SCSS:** `vim assets/style.scss`
 
 ```sass
 @import 'foundation-sites/scss/settings/_settings.scss';
@@ -200,6 +216,9 @@ PIPELINE = {
 
 @include foundation-everything;
 ```
+
+ - **Compile static assets:** `python manage.py collectstatic`
+ - **Copy generated assets:** `cp static/{style.css,script.js} assets/`
 
 ## Useful shell tools
 - **Run unit-tests:** `python manage.py test <app>`

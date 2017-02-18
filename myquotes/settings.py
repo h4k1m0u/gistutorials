@@ -131,8 +131,16 @@ STATIC_URL = '/static/'
 ###############################################################################
 
 
-# Where to generate CSS from SCSS
+# Where to collect static assets from
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Where Django looks for static assets
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
 
 
 # Where django, bower, pipeline look for static files
@@ -157,9 +165,15 @@ BOWER_INSTALLED_APPS = (
 )
 
 
+# Set pipeline static assets storage
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
+
 # Pass foundation through pipeline
 
 PIPELINE = {
+    'PIPELINE_ENABLED': True,
     'STYLESHEETS': {
         'style': {
             'source_filenames': (
@@ -177,6 +191,7 @@ PIPELINE = {
             'output_filename': 'script.js',
         },
     },
+    'JS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
     'COMPILERS': (
         'pipeline.compilers.sass.SASSCompiler',
     ),
