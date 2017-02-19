@@ -10,7 +10,14 @@ class QuotesListView(ListView):
         """
             Return quotes ordered by date.
         """
-        return Quote.objects.order_by('-date')
+        queryset = Quote.objects.order_by('-date')
+
+        # filter quotes by search query
+        search = self.request.GET.get('search')
+        if search:
+            queryset = queryset.filter(text__icontains=search)
+
+        return queryset
 
 
 class QuotesDetailView(DetailView):

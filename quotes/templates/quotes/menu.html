@@ -1,7 +1,7 @@
 <div class="top-bar">
     <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">My quotes</li>
+            <li class="menu-text">Book Quotes</li>
             <li><a href="{% url 'quotes:list' %}">Quotes</a></li>
             <li>
                 <a href="#">Categories</a>
@@ -15,9 +15,11 @@
     </div>
 
     <div class="top-bar-right">
-        <ul class="menu">
-            <li><input type="search" placeholder="Search"></li>
-            <li><button type="button" class="button">Search</button></li>
-        </ul>
+        <form>
+            <ul class="menu">
+                <li><input type="text" name="search" value="{{ request.GET.search }}" placeholder="Search"/></li>
+                <li><input type="submit" value="Search" class="button"/></li>
+            </ul>
+        </form>
     </div>
 </div>
