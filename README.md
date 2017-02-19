@@ -52,7 +52,8 @@ INSTALLED_APPS = {
 ```
 - **Create the models classes:** Add models' classes to `<app>/models.py`
 - **Create app migrations:** `python manage.py makemigrations <app>`
-- **View app migrations:** `python manage.py sqlmigrate <app> <migration>`
+- **View app migrations:** `python manage.py showmigrations <app>`
+- **View app migrations in sql format:** `python manage.py sqlmigrate <app> <migration>`
 - **Create app's tables:** `python manage.py migrate`
 
 ## Edit database tables from admin
@@ -221,4 +222,5 @@ PIPELINE = {
  - **Copy generated assets:** `cp static/{style.css,script.js} assets/`
 
 ## Useful shell tools
+- **Run django shell:** `python manage.py shell`
 - **Run unit-tests:** `python manage.py test <app>`

@@ -6,9 +6,17 @@
             <li>
                 <a href="#">Categories</a>
                 <ul class="menu vertical">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">History</a></li>
-                    <li><a href="#">Sport</a></li>
+                    {% for category in categories %}
+                        <li><a href="{% url 'quotes:list' category=category.slug %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li>
+                <a href="#">Books</a>
+                <ul class="menu vertical">
+                    {% for book in books %}
+                        <li><a href="{% url 'quotes:list' book=book.slug %}">{{ book.title }}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
         </ul>

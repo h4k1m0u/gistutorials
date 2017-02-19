@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>390</y>
+      <x>860</x>
+      <y>320</y>
       <w>150</w>
       <h>110</h>
     </coordinates>
@@ -14,14 +14,15 @@
 id
 username
 email
-password</panel_attributes>
+password
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
-      <y>390</y>
+      <x>370</x>
+      <y>320</y>
       <w>150</w>
       <h>100</h>
     </coordinates>
@@ -30,14 +31,15 @@ password</panel_attributes>
 id
 title
 isbn
-author_id</panel_attributes>
+author_id
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>390</y>
+      <x>10</x>
+      <y>320</y>
       <w>150</w>
       <h>80</h>
     </coordinates>
@@ -51,10 +53,10 @@ tag_id</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
-      <y>140</y>
+      <x>190</x>
+      <y>70</y>
       <w>150</w>
-      <h>130</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Quote
 --
@@ -63,14 +65,16 @@ text
 date
 book_id
 author_id
-quote_tag_id</panel_attributes>
+category_id
+quote_tag_id
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>200</y>
+      <x>80</x>
+      <y>130</y>
       <w>130</w>
       <h>210</h>
     </coordinates>
@@ -80,30 +84,30 @@ quote_tag_id</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>260</y>
-      <w>30</w>
-      <h>150</h>
+      <x>330</x>
+      <y>160</y>
+      <w>130</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>110.0;160.0;110.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>200</y>
-      <w>220</w>
+      <x>330</x>
+      <y>130</y>
+      <w>400</w>
       <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>200.0;190.0;200.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>380.0;190.0;380.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>570</y>
+      <x>10</x>
+      <y>500</y>
       <w>150</w>
       <h>80</h>
     </coordinates>
@@ -117,8 +121,8 @@ quote_tag_id</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>460</y>
+      <x>80</x>
+      <y>390</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -128,22 +132,59 @@ quote_tag_id</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>570</y>
+      <x>750</x>
+      <y>500</y>
       <w>150</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>Person
 --
 id
-name</panel_attributes>
+name
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>430</y>
+      <x>820</x>
+      <y>360</y>
+      <w>60</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>320</y>
+      <w>150</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Author
+--
+id
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>360</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>360</y>
       <w>60</w>
       <h>160</h>
     </coordinates>
@@ -151,38 +192,29 @@ name</panel_attributes>
     <additional_attributes>40.0;140.0;40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>720</x>
-      <y>430</y>
-      <w>70</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0;50.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>530</x>
-      <y>390</y>
+      <x>190</x>
+      <y>500</y>
       <w>150</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Author
+    <panel_attributes>Category
 --
-id</panel_attributes>
+id
+title
+bg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>430</y>
-      <w>140</w>
-      <h>30</h>
+      <x>250</x>
+      <y>210</y>
+      <w>30</w>
+      <h>310</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;290.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

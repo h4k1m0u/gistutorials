@@ -1,19 +1,22 @@
 from django.contrib import admin
-from .models import Quote, Book, Author
+from .models import Quote, Book, Author, Category
 
 
 # customize admin views
 class QuoteAdmin(admin.ModelAdmin):
     # fields to show in admin listview
-    list_display = ('text', 'author', 'book', 'date')
+    list_display = ('text', 'author', 'book', 'category', 'date')
 
-    # automatically slugify the title
+    # automatically slugify the text
     prepopulated_fields = {'slug': ('text',)}
 
 
 class BookAdmin(admin.ModelAdmin):
     # fields to show in admin listview
-    list_display = ('title', 'author')
+    list_display = ('title', 'isbn', 'author')
+
+    # automatically slugify the title
+    prepopulated_fields = {'slug': ('title',)}
 
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -21,7 +24,16 @@ class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    # fields to show in admin listview
+    list_display = ('name',)
+
+    # automatically slugify the name
+    prepopulated_fields = {'slug': ('name',)}
+
+
 # register models in the admin site
 admin.site.register(Quote, QuoteAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Author, AuthorAdmin)
+admin.site.register(Category, CategoryAdmin)
