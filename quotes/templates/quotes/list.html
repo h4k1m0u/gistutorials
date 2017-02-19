@@ -7,7 +7,7 @@
         <div class="row large-up-4">
             {% for quote in quotes %}
                 <div class="column column-block">
-                    <a href="{% url 'quotes:detail' quote.id %}">{{ quote.text }} from {{ quote.book.title }}</a>
+                    <a href="{% url 'quotes:detail' quote.id quote.slug %}">{{ quote.text }} from {{ quote.book.title }}</a>
                 </div>
             {% endfor %}
         </div>

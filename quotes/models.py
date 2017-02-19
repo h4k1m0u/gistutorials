@@ -47,6 +47,7 @@ class Book(models.Model):
 
 class Quote(models.Model):
     text = models.CharField(max_length=1000)
+    slug = models.SlugField(unique=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
     # foreign keys

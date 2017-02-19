@@ -7,6 +7,9 @@ class QuoteAdmin(admin.ModelAdmin):
     # fields to show in admin listview
     list_display = ('text', 'author', 'book', 'date')
 
+    # automatically slugify the title
+    prepopulated_fields = {'slug': ('text',)}
+
 
 class BookAdmin(admin.ModelAdmin):
     # fields to show in admin listview
