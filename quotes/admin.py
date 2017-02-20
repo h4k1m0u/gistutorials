@@ -23,6 +23,9 @@ class AuthorAdmin(admin.ModelAdmin):
     # fields to show in admin listview
     list_display = ('name',)
 
+    # automatically slugify the name
+    prepopulated_fields = {'slug': ('name',)}
+
 
 class CategoryAdmin(admin.ModelAdmin):
     # fields to show in admin listview

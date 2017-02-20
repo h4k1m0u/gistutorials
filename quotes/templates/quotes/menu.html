@@ -18,6 +18,14 @@
                         <li><a href="{% url 'quotes:list' book=book.slug %}">{{ book.title }}</a></li>
                     {% endfor %}
                 </ul>
+            <li>
+                <a href="#">Authors</a>
+                <ul class="menu vertical">
+                    {% for author in authors %}
+                        <li><a href="{% url 'quotes:list' author=author.slug %}">{{ author.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
             </li>
         </ul>
     </div>
@@ -25,7 +33,7 @@
     <div class="top-bar-right">
         <form>
             <ul class="menu">
-                <li><input type="text" name="search" value="{{ request.GET.search }}" placeholder="Search"/></li>
+                <li><input type="text" name="search" value="{{ search }}" placeholder="Search"/></li>
                 <li><input type="submit" value="Search" class="button"/></li>
             </ul>
         </form>

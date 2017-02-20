@@ -3,6 +3,7 @@ from django.db import models
 
 class Person(models.Model):
     name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(blank=True)
 
     class Meta:
         abstract = True

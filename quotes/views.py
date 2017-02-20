@@ -31,6 +31,11 @@ class QuotesListView(ListView):
         if book:
             queryset = queryset.filter(book__slug=book)
 
+        # filter quotes by author slug
+        author = self.kwargs.get('author')
+        if author:
+            queryset = queryset.filter(author__slug=author)
+
         return queryset
 
 
