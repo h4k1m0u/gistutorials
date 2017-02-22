@@ -1,0 +1,38 @@
+<ul class="accordion" data-accordion data-allow-all-closed="true">
+    <li class="accordion-item {% if browsed_category %} is-active {% endif %}" data-accordion-item>
+        <a href="#" class="accordion-title">Categories</a>
+        <div class="accordion-content" data-tab-content>
+            <ul>
+                {% for category in categories %}
+                    <li {% if category.slug == browsed_category %} class="active" {% endif %}>
+                        <a href="{% url 'quotes:list' category=category.slug %}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </li>
+    <li class="accordion-item {% if browsed_book %} is-active {% endif %}" data-accordion-item>
+        <a href="#" class="accordion-title">Books</a>
+        <div class="accordion-content" data-tab-content>
+            <ul>
+                {% for book in books %}
+                    <li {% if book.slug == browsed_book %} class="active" {% endif %}>
+                        <a href="{% url 'quotes:list' book=book.slug %}">{{ book.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </li>
+    <li class="accordion-item {% if browsed_author %} is-active {% endif %}" data-accordion-item>
+        <a href="#" class="accordion-title">Authors</a>
+        <div class="accordion-content" data-tab-content>
+            <ul>
+                {% for author in authors %}
+                    <li {% if author.slug == browsed_author %} class="active" {% endif %}>
+                        <a href="{% url 'quotes:list' author=author.slug %}">{{ author.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </li>
+</ul>

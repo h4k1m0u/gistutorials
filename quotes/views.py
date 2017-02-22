@@ -6,10 +6,6 @@ class QuotesListView(ListView):
     template_name = 'quotes/list.html'
     context_object_name = 'quotes'
 
-    # query parameters
-    # book = None
-    # category = None
-
     def get_queryset(self):
         """
             Return quotes ordered by date.
@@ -17,9 +13,9 @@ class QuotesListView(ListView):
         queryset = Quote.objects.order_by('-date')
 
         # filter quotes by search query
-        search = self.request.GET.get('search')
+        search = self.request.GET.get('search', '').strip()
         if search:
-            queryset = queryset.filter(text__icontains=search)
+            queryset = queryset.filter(text__icontains=' ' + search + ' ')
 
         # filter quotes by category slug
         category = self.kwargs.get('category')

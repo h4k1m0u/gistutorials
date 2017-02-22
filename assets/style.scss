@@ -2,3 +2,18 @@
 @import 'foundation-sites/scss/foundation.scss';
 
 @include foundation-everything;
+
+
+// Bookquotes
+// Sidebar
+// Active state
+.accordion-content .active > a {
+    background: $menu-item-background-active;
+    color: $menu-item-color-active;
+}
+
+// Change topbar link
+$topbar-link-color: black;
+.top-bar a {
+    color: $topbar-link-color;
+}
