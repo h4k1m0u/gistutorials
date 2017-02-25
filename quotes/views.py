@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from .models import Quote
+from .models import Quote, Category, Book, Author, Tag
 
 
 class QuotesListView(ListView):
@@ -8,7 +8,7 @@ class QuotesListView(ListView):
 
     def get_queryset(self):
         """
-            Return quotes ordered by date.
+            Return quotes ordered by date and filtered by url parameters.
         """
         queryset = Quote.objects.order_by('-date')
 
@@ -32,7 +32,41 @@ class QuotesListView(ListView):
         if author:
             queryset = queryset.filter(author__slug=author)
 
+        # filter quotes by tag slug
+        tag = self.kwargs.get('tag')
+        if tag:
+            queryset = queryset.filter(tags__slug=tag)
+
         return queryset
+
+    def get_context_data(self, **kwargs):
+        """
+            Pass url parameters to the template.
+        """
+        context = super(QuotesListView, self).get_context_data(**kwargs)
+
+        # find name corresponding to slug
+        category_slug = self.kwargs.get('category')
+        if category_slug:
+            category_name = Category.objects.get(slug=category_slug).name
+            context['category'] = category_name
+
+        book_slug = self.kwargs.get('book')
+        if book_slug:
+            book_title = Book.objects.get(slug=book_slug).title
+            context['book'] = book_title
+
+        author_slug = self.kwargs.get('author')
+        if author_slug:
+            author_name = Author.objects.get(slug=author_slug).name
+            context['author'] = author_name
+
+        tag_slug = self.kwargs.get('tag')
+        if tag_slug:
+            tag_name = Tag.objects.get(slug=tag_slug).name
+            context['tag'] = tag_name
+
+        return context
 
 
 class QuotesDetailView(DetailView):

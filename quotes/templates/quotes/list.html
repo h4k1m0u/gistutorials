@@ -3,11 +3,21 @@
 {% block title %}Quotes list{% endblock %}
 
 {% block content %}
+    {% if category %}
+        <h1>Quotes in category "{{ category }}"</h1>
+    {% elif book %}
+        <h1>Quotes in "{{ book }}"</h1>
+    {% elif author %}
+        <h1>Quotes by "{{ author }}"</h1>
+    {% elif tag %}
+        <h1>Quotes with tag "#{{ tag }}"</h1>
+    {% endif %} 
+
     {% if quotes %}
         <div class="row large-up-4">
             {% for quote in quotes %}
-                <div class="column column-block">
-                    <a href="{% url 'quotes:detail' pk=quote.id slug=quote.slug %}">{{ quote.text }} from {{ quote.book.title }}</a>
+                <div class="column column-block quote-item">
+                    <a href="{% url 'quotes:detail' pk=quote.id slug=quote.slug %}">{{ quote.text | truncatewords:10 }}</a>
                 </div>
             {% endfor %}
         </div>

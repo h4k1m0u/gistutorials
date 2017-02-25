@@ -65,6 +65,21 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(blank=True)
+
+    def __str__(self):
+        """
+            Field to show in the related models admin site.
+        """
+        return self.name
+
+    class Meta:
+        # order of drop-down list items
+        ordering = ('name',)
+
+
 class Quote(models.Model):
     text = models.CharField(max_length=1000, unique=True)
     slug = models.SlugField(blank=True)
@@ -78,6 +93,7 @@ class Quote(models.Model):
                                on_delete=models.CASCADE)
     category = models.ForeignKey(Category, null=True, blank=True,
                                  on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         """

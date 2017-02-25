@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Quote, Book, Author, Category
+from .models import Quote, Book, Author, Category, Tag
 
 
 # customize admin views
@@ -35,8 +35,17 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
+class TagAdmin(admin.ModelAdmin):
+    # fields to show in admin listview
+    list_display = ('name',)
+
+    # automatically slugify the name
+    prepopulated_fields = {'slug': ('name',)}
+
+
 # register models in the admin site
 admin.site.register(Quote, QuoteAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Tag, TagAdmin)
