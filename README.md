@@ -224,3 +224,6 @@ PIPELINE = {
 ## Useful shell tools
 - **Run django shell:** `python manage.py shell`
 - **Run unit-tests:** `python manage.py test <app>`
+
+# Color palette
+["Tech city dream" color palette](http://www.colourlovers.com/palette/1636915/Tech_city_dream)

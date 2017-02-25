@@ -1,11 +1,31 @@
+//////////////////////////////////////////////////////////
+// Foundation
+//////////////////////////////////////////////////////////
+
 @import 'foundation-sites/scss/settings/_settings.scss';
 @import 'foundation-sites/scss/foundation.scss';
-
-@include foundation-everything;
 
 //////////////////////////////////////////////////////////
 // Bookquotes
 //////////////////////////////////////////////////////////
+
+// Colors
+$bookquotes-gray-dark: #444444;
+$bookquotes-gray-light: #EEEEDD;
+$bookquotes-cyan-dark: #559999;
+$bookquotes-cyan-light: #CCDDCC;
+$bookquotes-red: #69D2E7;
+
+// Links
+$anchor-color: $bookquotes-gray-light;
+$anchor-color-hover: $bookquotes-red;
+
+// Topbar
+$topbar-background: $bookquotes-gray-dark;
+$topbar-margin-bottom: 1em;
+.top-bar {
+    margin-bottom: $topbar-margin-bottom;
+}
 
 // Active sidebar
 .accordion-content {
@@ -15,13 +35,8 @@
     }
 }
 
-// Quotes list
-.quote-list {
+//////////////////////////////////////////////////////////
+// Foundation components
+//////////////////////////////////////////////////////////
 
-// Change topbar link
-/*
-$topbar-link-color: black;
-.top-bar a {
-    color: $topbar-link-color;
-}
-*/
+@include foundation-everything;

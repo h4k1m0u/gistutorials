@@ -3,7 +3,8 @@ from .models import Quote, Category, Book, Author, Tag
 
 
 class QuotesListView(ListView):
-    template_name = 'quotes/list.html'
+    template_name = 'quotes/quotes-list.html'
+    model = Quote
     context_object_name = 'quotes'
 
     def get_queryset(self):
@@ -70,5 +71,23 @@ class QuotesListView(ListView):
 
 
 class QuotesDetailView(DetailView):
-    template_name = 'quotes/detail.html'
+    template_name = 'quotes/quote-detail.html'
     model = Quote
+
+
+class BooksListView(ListView):
+    template_name = 'quotes/books-list.html'
+    model = Book
+    context_object_name = 'books'
+
+
+class CategoriesListView(ListView):
+    template_name = 'quotes/categories-list.html'
+    model = Category
+    context_object_name = 'categories'
+
+
+class AuthorsListView(ListView):
+    template_name = 'quotes/authors-list.html'
+    model = Author
+    context_object_name = 'authors'

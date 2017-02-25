@@ -5,7 +5,7 @@
             <ul>
                 {% for category in categories %}
                     <li {% if category.slug == browsed_category %} class="active" {% endif %}>
-                        <a href="{% url 'quotes:list' category=category.slug %}">{{ category.name }}</a>
+                        <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -17,7 +17,7 @@
             <ul>
                 {% for book in books %}
                     <li {% if book.slug == browsed_book %} class="active" {% endif %}>
-                        <a href="{% url 'quotes:list' book=book.slug %}">{{ book.title }}</a>
+                        <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -29,7 +29,7 @@
             <ul>
                 {% for author in authors %}
                     <li {% if author.slug == browsed_author %} class="active" {% endif %}>
-                        <a href="{% url 'quotes:list' author=author.slug %}">{{ author.name }}</a>
+                        <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }}</a>
                     </li>
                 {% endfor %}
             </ul>

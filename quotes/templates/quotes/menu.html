@@ -2,27 +2,27 @@
     <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Book Quotes</li>
-            <li><a href="{% url 'quotes:list' %}">Quotes</a></li>
+            <li><a href="{% url 'quotes:quotes-list' %}">Quotes</a></li>
             <li>
-                <a href="#">Categories</a>
+                <a href="{% url 'quotes:categories-list' %}">Categories</a>
                 <ul class="menu vertical">
                     {% for category in categories %}
-                        <li><a href="{% url 'quotes:list' category=category.slug %}">{{ category.name }}</a></li>
+                        <li><a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
             <li>
-                <a href="#">Books</a>
+                <a href="{% url 'quotes:books-list' %}">Books</a>
                 <ul class="menu vertical">
                     {% for book in books %}
-                        <li><a href="{% url 'quotes:list' book=book.slug %}">{{ book.title }}</a></li>
+                        <li><a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }}</a></li>
                     {% endfor %}
                 </ul>
             <li>
-                <a href="#">Authors</a>
+                <a href="{% url 'quotes:authors-list' %}">Authors</a>
                 <ul class="menu vertical">
                     {% for author in authors %}
-                        <li><a href="{% url 'quotes:list' author=author.slug %}">{{ author.name }}</a></li>
+                        <li><a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>

@@ -1,0 +1,24 @@
+{% extends 'quotes/base.html' %}
+
+{% block title %}Quotes detail{% endblock %}
+
+{% block content %}
+    <blockquote class="quote-detail">{{ quote.text }}</blockquote>
+    <cite>
+        <a href="{% url 'quotes:quotes-list' author=quote.author.slug %}">{{ quote.author.name }}</a>
+    </cite>
+
+    {% if quote.book %}
+        <h2>From book:</h2>
+
+        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=GB&source=ac&ref=tf_til&ad_type=product_link&tracking_id=bookquote-21&marketplace=amazon&region=GB&placement={{ quote.book.isbn }}&asins={{ quote.book.isbn }}&linkId=&show_border=true&link_opens_in_new_window=true">
+        </iframe> 
+    {% endif %}
+
+    {% if quote.tags %}
+        <h2>Tags:</h2>
+        {% for tag in quote.tags.all %}
+            <a href="{% url 'quotes:quotes-list' tag=tag.slug %}">#{{ tag.name }}</a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

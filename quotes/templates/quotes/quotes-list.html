@@ -17,7 +17,7 @@
         <div class="row large-up-4">
             {% for quote in quotes %}
                 <div class="column column-block quote-item">
-                    <a href="{% url 'quotes:detail' pk=quote.id slug=quote.slug %}">{{ quote.text | truncatewords:10 }}</a>
+                    <a href="{% url 'quotes:quote-detail' pk=quote.id slug=quote.slug %}">{{ quote.text | truncatewords:10 }}</a>
                 </div>
             {% endfor %}
         </div>
