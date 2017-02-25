@@ -14,17 +14,21 @@ $bookquotes-gray-dark: #444444;
 $bookquotes-gray-light: #EEEEDD;
 $bookquotes-cyan-dark: #559999;
 $bookquotes-cyan-light: #CCDDCC;
-$bookquotes-red: #69D2E7;
+$bookquotes-red: #FF2255;
 
 // Links
 $anchor-color: $bookquotes-gray-light;
-$anchor-color-hover: $bookquotes-red;
+$anchor-color-hover: $bookquotes-cyan-dark;
 
 // Topbar
 $topbar-background: $bookquotes-gray-dark;
+$topbar-submenu-background: $bookquotes-gray-dark;
 $topbar-margin-bottom: 1em;
 .top-bar {
     margin-bottom: $topbar-margin-bottom;
+}
+.menu-text {
+    color: $bookquotes-red;
 }
 
 // Active sidebar
