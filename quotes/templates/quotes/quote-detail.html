@@ -1,8 +1,11 @@
 {% extends 'quotes/base.html' %}
+{% load breadcrumb %}
 
 {% block title %}Quotes detail{% endblock %}
 
 {% block content %}
+    {% breadcrumb %}
+
     <div class="quote">
         <blockquote>{{ quote.text }}</blockquote>
         {% if quote.author %}

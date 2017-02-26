@@ -16,11 +16,11 @@ def sidebar(context):
 
     # populate menu with top five entries by # of quotes
     authors = Author.objects.annotate(num_quotes=Count('quote'))\
-        .order_by('-num_quotes')[:10].all()
+        .order_by('-num_quotes')[:5].all()
     categories = Category.objects.annotate(num_quotes=Count('quote'))\
-        .order_by('-num_quotes')[:10].all()
+        .order_by('-num_quotes')[:5].all()
     books = Book.objects.annotate(num_quotes=Count('quote'))\
-        .order_by('-num_quotes')[:10].all()
+        .order_by('-num_quotes')[:5].all()
 
     return {
         'browsed_author': browsed_author,

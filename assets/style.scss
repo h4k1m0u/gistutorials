@@ -135,6 +135,19 @@ $accordion-content-border: 1px solid $bookquotes-cyan-light;
 }
 
 
+// Breadcrumb
+
+$breadcrumbs-item-uppercase: false;
+$breadcrumbs-item-font-size: rem-calc(12);
+$breadcrumbs-item-color: $bookquotes-gray-dark;
+.breadcrumbs li a {
+    &:hover {
+        text-decoration: none;
+        color: $bookquotes-cyan-dark;
+    }
+}
+
+
 // Quotes, Books lists
 
 $list-item-radius: 0.5em;
