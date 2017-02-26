@@ -6,15 +6,24 @@
     <h1>Authors</h1>
 
     {% if authors %}
-        <div class="row large-up-4">
-            {% for author in authors %}
-                <div class="column column-block quote-item">
-                    <h3>
-                        <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }}</a>
-                    </h3>
-                </div>
+        {% regroup authors by lastname|first|upper as authors_groups %}
+
+        <ul>
+            {% for authors_group in authors_groups %}
+                <li>
+                    <small>{{ authors_group.grouper }}</small>
+                    <ul class="authors">
+                        {% for author in authors_group.list %}
+                            <li>
+                                <h2 class="title">
+                                    <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }}</a>
+                                </h2>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
             {% endfor %}
-        </div>
+        </ul>
     {% else %}
         <p>No authors.</p>
     {% endif %}

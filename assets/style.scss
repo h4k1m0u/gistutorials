@@ -18,15 +18,40 @@ $bookquotes-cyan-light: #CCDDCC;
 $bookquotes-red: #FF2255;
 
 
+// Emphasis
+
+strong {
+    font-weight: $global-weight-normal !important;
+    color: $bookquotes-cyan-dark;
+}
+
+
+// Small
+
+$header-small-font-color: $bookquotes-red;
+small {
+    color: $header-small-font-color;
+}
+
+
 // Headings
 
 $header-color: $bookquotes-gray-dark;
+h2.title {
+    font-size: rem-calc(map-deep-get($header-styles, small, h2, font-size));
+    a {
+        color: $bookquotes-gray-dark;
+        &:hover {
+            color: $bookquotes-cyan-dark;
+        }
+    }
+}
 
 
 // Blockquotes
 
 $blockquote-color: $bookquotes-gray-dark;
-$blockquote-border: 1px solid $bookquotes-gray-dark;
+$blockquote-border: 1px solid $bookquotes-cyan-light;
 
 
 // Citations
@@ -45,6 +70,11 @@ $anchor-color: $bookquotes-gray-light;
 $anchor-color-hover: $bookquotes-cyan-dark;
 
 
+// Lists
+
+$list-style-type: none;
+
+
 // Buttons
 
 $button-background: $bookquotes-cyan-dark;
@@ -60,6 +90,7 @@ $menu-item-color-active: $bookquotes-cyan-dark;
 $menu-item-background-active: transparent;
 .top-bar {
     margin-bottom: $topbar-margin-bottom;
+    border-bottom: 2px solid $bookquotes-red;
 }
 .menu-text {
     color: $bookquotes-red !important;
@@ -104,18 +135,37 @@ $accordion-content-border: 1px solid $bookquotes-cyan-light;
 }
 
 
-// Quotes grid
+// Quotes, Books lists
 
-$quote-radius: 0.5em;
-.quote {
+$list-item-radius: 0.5em;
+.quote, .book {
     padding: $global-padding;
     background-color: $bookquotes-gray-light;
-    border-radius: $quote-radius;
+    border-radius: $list-item-radius;
     border: 1px solid $bookquotes-cyan-light;
-    a {
+    h2 a {
         color: $bookquotes-gray-dark;
+        &:hover {
+            color: $bookquotes-cyan-dark;
+        }
     }
 }
+.book {
+    text-align: center;
+}
+.quote blockquote a {
+    color: $bookquotes-gray-dark;
+    &:hover {
+        color: $bookquotes-cyan-dark;
+    }
+}
+
+
+// Authors, Categories lists
+
+.authors, .categories {
+}
+
 
 //////////////////////////////////////////////////////////
 // Foundation components

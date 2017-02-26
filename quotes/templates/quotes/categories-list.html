@@ -6,15 +6,24 @@
     <h1>Categories</h1>
 
     {% if categories %}
-        <div class="row large-up-4">
-            {% for category in categories %}
-                <div class="column column-block quote-item">
-                    <h3>
-                        <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }}</a>
-                    </h3>
-                </div>
+        {% regroup categories by name|first|upper as categories_groups %}
+
+        <ul>
+            {% for categories_group in categories_groups %}
+                <li>
+                    <small>{{ categories_group.grouper }}</small>
+                    <ul class="categories">
+                        {% for category in categories_group.list %}
+                            <li>
+                                <h2 class="title">
+                                    <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }}</a>
+                                </h2>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
             {% endfor %}
-        </div>
+        </ul>
     {% else %}
         <p>No categories.</p>
     {% endif %}

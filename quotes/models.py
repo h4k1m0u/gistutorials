@@ -2,14 +2,25 @@ from django.db import models
 
 
 class Person(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+    firstname = models.CharField(max_length=50, blank=True)
+    lastname = models.CharField(max_length=50, blank=True)
     slug = models.SlugField(blank=True)
+
+    @property
+    def name(self):
+        """
+            Returns the complete name.
+        """
+        return self.firstname + ' ' + self.lastname
 
     class Meta:
         abstract = True
 
+        # name must be unique
+        unique_together = ('firstname', 'lastname',)
+
         # order of drop-down list items
-        ordering = ('name',)
+        ordering = ('lastname', 'firstname')
 
 
 class Author(Person):

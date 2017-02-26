@@ -21,10 +21,10 @@ class BookAdmin(admin.ModelAdmin):
 
 class AuthorAdmin(admin.ModelAdmin):
     # fields to show in admin listview
-    list_display = ('name',)
+    list_display = ('lastname', 'firstname')
 
     # automatically slugify the name
-    prepopulated_fields = {'slug': ('name',)}
+    prepopulated_fields = {'slug': ('firstname', 'lastname')}
 
 
 class CategoryAdmin(admin.ModelAdmin):
