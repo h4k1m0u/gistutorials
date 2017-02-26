@@ -1,8 +1,10 @@
 {% extends 'quotes/base.html' %}
 
-{% block title %}Books list{% endblock %}
+{% block title %}Authors list{% endblock %}
 
 {% block content %}
+    <h1>Authors</h1>
+
     {% if authors %}
         <div class="row large-up-4">
             {% for author in authors %}
@@ -14,6 +16,6 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>No books.</p>
+        <p>No authors.</p>
     {% endif %}
 {% endblock %}

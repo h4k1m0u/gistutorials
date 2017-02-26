@@ -1,22 +1,21 @@
 {% extends 'quotes/base.html' %}
 
-{% block title %}Books list{% endblock %}
+{% block title %}Categories list{% endblock %}
 
 {% block content %}
-    {% if books %}
-        <div class="row large-up-4">
-            {% for book in books %}
-                <div class="column column-block quote-item">
-                    <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=GB&source=ac&ref=tf_til&ad_type=product_link&tracking_id=bookquote-21&marketplace=amazon&region=GB&placement={{ book.isbn }}&asins={{ book.isbn }}&linkId=&show_border=true&link_opens_in_new_window=true">
-                    </iframe> 
+    <h1>Categories</h1>
 
+    {% if categories %}
+        <div class="row large-up-4">
+            {% for category in categories %}
+                <div class="column column-block quote-item">
                     <h3>
-                        <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title | truncatewords:10 }}</a>
+                        <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }}</a>
                     </h3>
                 </div>
             {% endfor %}
         </div>
     {% else %}
-        <p>No books.</p>
+        <p>No categories.</p>
     {% endif %}
 {% endblock %}

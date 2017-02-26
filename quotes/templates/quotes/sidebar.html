@@ -5,9 +5,12 @@
             <ul>
                 {% for category in categories %}
                     <li {% if category.slug == browsed_category %} class="active" {% endif %}>
-                        <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }}</a>
+                        <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }} ({{ category.num_quotes }})</a>
                     </li>
                 {% endfor %}
+                <li>
+                    <a href="{% url 'quotes:categories-list' %}">...</a>
+                </li>
             </ul>
         </div>
     </li>
@@ -17,9 +20,12 @@
             <ul>
                 {% for book in books %}
                     <li {% if book.slug == browsed_book %} class="active" {% endif %}>
-                        <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }}</a>
+                        <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }} ({{ book.num_quotes }})</a>
                     </li>
                 {% endfor %}
+                <li>
+                    <a href="{% url 'quotes:books-list' %}">...</a>
+                </li>
             </ul>
         </div>
     </li>
@@ -29,9 +35,12 @@
             <ul>
                 {% for author in authors %}
                     <li {% if author.slug == browsed_author %} class="active" {% endif %}>
-                        <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }}</a>
+                        <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }} ({{ author.num_quotes }})</a>
                     </li>
                 {% endfor %}
+                <li>
+                    <a href="{% url 'quotes:authors-list' %}">...</a>
+                </li>
             </ul>
         </div>
     </li>

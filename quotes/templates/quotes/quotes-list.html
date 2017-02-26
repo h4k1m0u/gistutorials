@@ -16,8 +16,18 @@
     {% if quotes %}
         <div class="row large-up-4">
             {% for quote in quotes %}
-                <div class="column column-block quote-item">
-                    <a href="{% url 'quotes:quote-detail' pk=quote.id slug=quote.slug %}">{{ quote.text | truncatewords:10 }}</a>
+                <div class="column column-block">
+                    <div class="quote">
+                        <blockquote>
+                            <a href="{% url 'quotes:quote-detail' pk=quote.id slug=quote.slug %}">{{ quote.text | truncatewords:10 }}</a>
+                        </blockquote>
+                    
+                        {% if quote.author %}
+                            <cite>
+                                <a href="{% url 'quotes:quotes-list' author=quote.author.slug %}">{{ quote.author.name }}</a>
+                            </cite>
+                        {% endif %}
+                    </div>
                 </div>
             {% endfor %}
         </div>

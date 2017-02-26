@@ -10,32 +10,110 @@
 //////////////////////////////////////////////////////////
 
 // Colors
+
 $bookquotes-gray-dark: #444444;
 $bookquotes-gray-light: #EEEEDD;
 $bookquotes-cyan-dark: #559999;
 $bookquotes-cyan-light: #CCDDCC;
 $bookquotes-red: #FF2255;
 
+
+// Headings
+
+$header-color: $bookquotes-gray-dark;
+
+
+// Blockquotes
+
+$blockquote-color: $bookquotes-gray-dark;
+$blockquote-border: 1px solid $bookquotes-gray-dark;
+
+
+// Citations
+
+cite a {
+    color: $bookquotes-cyan-dark;
+    &:hover {
+        color: $bookquotes-red;
+    }
+}
+
+
 // Links
+
 $anchor-color: $bookquotes-gray-light;
 $anchor-color-hover: $bookquotes-cyan-dark;
 
+
+// Buttons
+
+$button-background: $bookquotes-cyan-dark;
+$button-background-hover: $bookquotes-red;
+
+
 // Topbar
+
 $topbar-background: $bookquotes-gray-dark;
-$topbar-submenu-background: $bookquotes-gray-dark;
+$topbar-submenu-background: $bookquotes-gray-light;
 $topbar-margin-bottom: 1em;
+$menu-item-color-active: $bookquotes-cyan-dark;
+$menu-item-background-active: transparent;
 .top-bar {
     margin-bottom: $topbar-margin-bottom;
 }
 .menu-text {
-    color: $bookquotes-red;
+    color: $bookquotes-red !important;
 }
 
-// Active sidebar
-.accordion-content {
-    .active > a {
-        background: $menu-item-background-active;
-        color: $menu-item-color-active;
+
+// Dropdown menu
+
+$dropdownmenu-arrows: false;
+$dropdownmenu-border: 1px solid $bookquotes-cyan-light;
+.is-dropdown-submenu li > a {
+    color: $bookquotes-gray-dark;
+    &:hover {
+        color: $bookquotes-cyan-dark;
+    }
+}
+
+
+// Accordion sidebar
+
+$accordion-plusminus: false;
+$accordion-title-font-size: 1em;
+$accordion-background: $bookquotes-gray-light;
+$accordion-item-color: $bookquotes-gray-dark;
+$accordion-item-background-hover: transparent;
+$accordion-content-border: 1px solid $bookquotes-cyan-light;
+
+.accordion-content ul {
+    list-style-type: none;
+    li {
+        margin-bottom: 1em;
+        &.active a {
+            color: $bookquotes-cyan-dark;
+        }
+        a {
+            color: $bookquotes-gray-dark;
+            &:hover {
+                color: $bookquotes-cyan-dark;
+            }
+        }
+    }
+}
+
+
+// Quotes grid
+
+$quote-radius: 0.5em;
+.quote {
+    padding: $global-padding;
+    background-color: $bookquotes-gray-light;
+    border-radius: $quote-radius;
+    border: 1px solid $bookquotes-cyan-light;
+    a {
+        color: $bookquotes-gray-dark;
     }
 }
 

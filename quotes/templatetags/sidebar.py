@@ -1,4 +1,5 @@
 from django import template
+from django.db.models import Count
 from quotes.models import Category, Book, Author
 
 
@@ -13,11 +14,19 @@ def sidebar(context):
     browsed_book = kwargs.get('book')
     browsed_category = kwargs.get('category')
 
+    # populate menu with top five entries by # of quotes
+    authors = Author.objects.annotate(num_quotes=Count('quote'))\
+        .order_by('-num_quotes')[:10].all()
+    categories = Category.objects.annotate(num_quotes=Count('quote'))\
+        .order_by('-num_quotes')[:10].all()
+    books = Book.objects.annotate(num_quotes=Count('quote'))\
+        .order_by('-num_quotes')[:10].all()
+
     return {
-        'authors': Author.objects.all(),
         'browsed_author': browsed_author,
-        'books': Book.objects.all(),
         'browsed_book': browsed_book,
-        'categories': Category.objects.all(),
         'browsed_category': browsed_category,
+        'categories': categories,
+        'books': books,
+        'authors': authors,
     }

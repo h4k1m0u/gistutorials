@@ -3,10 +3,12 @@
 {% block title %}Quotes detail{% endblock %}
 
 {% block content %}
-    <blockquote class="quote-detail">{{ quote.text }}</blockquote>
-    <cite>
-        <a href="{% url 'quotes:quotes-list' author=quote.author.slug %}">{{ quote.author.name }}</a>
-    </cite>
+    <blockquote>{{ quote.text }}</blockquote>
+    {% if quote.author %}
+        <cite>
+            <a href="{% url 'quotes:quotes-list' author=quote.author.slug %}">{{ quote.author.name }}</a>
+        </cite>
+    {% endif %}
 
     {% if quote.book %}
         <h2>From book:</h2>
