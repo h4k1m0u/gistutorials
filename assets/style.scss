@@ -39,12 +39,6 @@ small {
 $header-color: $bookquotes-gray-dark;
 h2.title {
     font-size: rem-calc(map-deep-get($header-styles, small, h2, font-size));
-    a {
-        color: $bookquotes-gray-dark;
-        &:hover {
-            color: $bookquotes-cyan-dark;
-        }
-    }
 }
 
 
@@ -52,6 +46,12 @@ h2.title {
 
 $blockquote-color: $bookquotes-gray-dark;
 $blockquote-border: 1px solid $bookquotes-cyan-light;
+
+
+// Links
+
+$anchor-color: $bookquotes-gray-dark;
+$anchor-color-hover: $bookquotes-cyan-dark;
 
 
 // Citations
@@ -62,12 +62,6 @@ cite a {
         color: $bookquotes-red;
     }
 }
-
-
-// Links
-
-$anchor-color: $bookquotes-gray-light;
-$anchor-color-hover: $bookquotes-cyan-dark;
 
 
 // Lists
@@ -85,7 +79,7 @@ $button-background-hover: $bookquotes-red;
 
 $topbar-background: $bookquotes-gray-dark;
 $topbar-submenu-background: $bookquotes-gray-light;
-$topbar-margin-bottom: 1em;
+$topbar-margin-bottom: rem-calc(20);
 $menu-item-color-active: $bookquotes-cyan-dark;
 $menu-item-background-active: transparent;
 .top-bar {
@@ -101,10 +95,18 @@ $menu-item-background-active: transparent;
 
 $dropdownmenu-arrows: false;
 $dropdownmenu-border: 1px solid $bookquotes-cyan-light;
-.is-dropdown-submenu li > a {
-    color: $bookquotes-gray-dark;
-    &:hover {
-        color: $bookquotes-cyan-dark;
+.menu > li {
+    > a {
+        color: $bookquotes-gray-light;
+        &:hover {
+            color: $bookquotes-cyan-dark;
+        }
+    }
+    > ul.submenu > li > a {
+        color: $bookquotes-gray-dark;
+        &:hover {
+            color: $bookquotes-cyan-dark;
+        }
     }
 }
 
@@ -112,7 +114,7 @@ $dropdownmenu-border: 1px solid $bookquotes-cyan-light;
 // Accordion sidebar
 
 $accordion-plusminus: false;
-$accordion-title-font-size: 1em;
+$accordion-title-font-size: rem-calc(14);
 $accordion-background: $bookquotes-gray-light;
 $accordion-item-color: $bookquotes-gray-dark;
 $accordion-item-background-hover: transparent;
@@ -121,15 +123,9 @@ $accordion-content-border: 1px solid $bookquotes-cyan-light;
 .accordion-content ul {
     list-style-type: none;
     li {
-        margin-bottom: 1em;
+        margin-bottom: rem-calc(20);
         &.active a {
             color: $bookquotes-cyan-dark;
-        }
-        a {
-            color: $bookquotes-gray-dark;
-            &:hover {
-                color: $bookquotes-cyan-dark;
-            }
         }
     }
 }
@@ -150,33 +146,44 @@ $breadcrumbs-item-color: $bookquotes-gray-dark;
 
 // Quotes, Books lists
 
-$list-item-radius: 0.5em;
+$list-item-radius: rem-calc(10);
 .quote, .book {
     padding: $global-padding;
     background-color: $bookquotes-gray-light;
     border-radius: $list-item-radius;
     border: 1px solid $bookquotes-cyan-light;
-    h2 a {
-        color: $bookquotes-gray-dark;
-        &:hover {
-            color: $bookquotes-cyan-dark;
-        }
-    }
 }
 .book {
     text-align: center;
 }
-.quote blockquote a {
-    color: $bookquotes-gray-dark;
+
+
+// Sharethis plugin
+
+.sharethis-inline-share-buttons {
+    margin-top: rem-calc(20);
+    margin-bottom: rem-calc(20);
+}
+
+
+// Tags
+
+.tags a {
+    font-size: rem-calc(12);
+    color: $bookquotes-cyan-dark;
     &:hover {
-        color: $bookquotes-cyan-dark;
+        color: $bookquotes-red;
     }
 }
 
 
-// Authors, Categories lists
+// Footer
 
-.authors, .categories {
+footer {
+    color: $bookquotes-gray-light;
+    background-color: $bookquotes-gray-dark;
+    border-top: 2px solid $bookquotes-red;
+    text-align: center;
 }
 
 

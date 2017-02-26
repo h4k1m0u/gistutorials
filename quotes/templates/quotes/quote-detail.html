@@ -15,17 +15,27 @@
         {% endif %}
     </div>
 
-    {% if quote.book %}
-        <h2>Book</h2>
+    <div class="sharethis-inline-share-buttons"></div>
 
-        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=GB&source=ac&ref=tf_til&ad_type=product_link&tracking_id=bookquote-21&marketplace=amazon&region=GB&placement={{ quote.book.isbn }}&asins={{ quote.book.isbn }}&linkId=&show_border=true&link_opens_in_new_window=true">
-        </iframe> 
-    {% endif %}
+    <div class="row">
+        <div class="large-2 columns">
+            {% if quote.book %}
+                <h2 class="title">From</h2>
 
-    {% if quote.tags %}
-        <h2>Tags</h2>
-        {% for tag in quote.tags.all %}
-            <a href="{% url 'quotes:quotes-list' tag=tag.slug %}">#{{ tag.name }}</a>
-        {% endfor %}
-    {% endif %}
+                <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=GB&source=ac&ref=tf_til&ad_type=product_link&tracking_id=bookquote-21&marketplace=amazon&region=GB&placement={{ quote.book.isbn }}&asins={{ quote.book.isbn }}&linkId=&show_border=true&link_opens_in_new_window=true">
+                </iframe> 
+            {% endif %}
+        </div>
+
+        <div class="large-9 columns">
+            {% if quote.tags.count %}
+                <div class="tags">
+                    <h2 class="title">Tags</h2>
+                    {% for tag in quote.tags.all %}
+                        <a href="{% url 'quotes:quotes-list' tag=tag.slug %}">#{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

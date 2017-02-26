@@ -1,14 +1,20 @@
 <nav role="navigation">
     <ul class="breadcrumbs">
-        <li>
-            <a href="{% url 'quotes:quotes-list' category=quote.category.slug %}">{{ quote.category.name }}</a>
-        </li>
-        <li>
-            <a href="{% url 'quotes:quotes-list' book=quote.book.slug %}">{{ quote.book.title }}</a>
-        </li>
-        <li>
-            <a href="{% url 'quotes:quotes-list' author=quote.author.slug %}">{{ quote.author.name }}</a>
-        </li>
+        {% if quote.category %}
+            <li>
+                <a href="{% url 'quotes:quotes-list' category=quote.category.slug %}">{{ quote.category.name }}</a>
+            </li>
+        {% endif %}
+        {% if quote.book %}
+            <li>
+                <a href="{% url 'quotes:quotes-list' book=quote.book.slug %}">{{ quote.book.title }}</a>
+            </li>
+        {% endif %}
+        {% if quote.author %}
+            <li>
+                <a href="{% url 'quotes:quotes-list' author=quote.author.slug %}">{{ quote.author.name }}</a>
+            </li>
+        {% endif %}
         <li>
             {{ quote.text | truncatewords:10 }}
         </li>
