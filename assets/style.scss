@@ -184,6 +184,12 @@ footer {
     background-color: $bookquotes-gray-dark;
     border-top: 2px solid $bookquotes-red;
     text-align: center;
+    a {
+        color: $bookquotes-cyan-dark;
+        &:hover {
+            color: $bookquotes-red;
+        }
+    }
 }
 
 
