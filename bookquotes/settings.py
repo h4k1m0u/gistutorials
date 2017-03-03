@@ -25,7 +25,7 @@ SECRET_KEY = 'm3gq=zljfp91j#ecz!dh@7lu=8=dx&j7-2+!n$_i4z))jrb8gq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 
 
 # Application definition
@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bookquotes',
         'USER': 'hakim',
-        'PASSWORD': '',
+        'PASSWORD': '78G62h9',
         'HOST': 'localhost',
         'PORT': '',
     }
