@@ -193,6 +193,19 @@ footer {
 }
 
 
+// Mobile
+
+@include breakpoint(medium down) {
+    html {
+        font-size: 200% !important;
+    }
+    .sticky {
+        position: static !important;
+        margin-top: 0 !important;
+    }
+}
+
+
 //////////////////////////////////////////////////////////
 // Foundation components
 //////////////////////////////////////////////////////////
