@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm3gq=zljfp91j#ecz!dh@7lu=8=dx&j7-2+!n$_i4z))jrb8gq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 
@@ -131,16 +131,16 @@ STATIC_URL = '/static/'
 ###############################################################################
 
 
-# Where to collect static assets from
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
-# Where Django looks for static assets
+# Where orginal *.scss file is located
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
+
+
+# Where the produced static files are generated (e.g. compiled *.css file)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Where django, bower, pipeline look for static files

@@ -1,6 +1,11 @@
 *.swp
 bower_components
-static
+
+# bower components in static folder
+static/foundation-sites
+static/jquery
+static/what-input
+static/.sass-cache
 
 # python
 __pycache__

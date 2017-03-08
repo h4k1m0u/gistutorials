@@ -1,0 +1,213 @@
+//////////////////////////////////////////////////////////
+// Foundation
+//////////////////////////////////////////////////////////
+
+@import 'foundation-sites/scss/settings/_settings.scss';
+@import 'foundation-sites/scss/foundation.scss';
+
+//////////////////////////////////////////////////////////
+// Bookquotes
+//////////////////////////////////////////////////////////
+
+// Colors
+
+$bookquotes-gray-dark: #444444;
+$bookquotes-gray-light: #EEEEDD;
+$bookquotes-cyan-dark: #559999;
+$bookquotes-cyan-light: #CCDDCC;
+$bookquotes-red: #FF2255;
+
+
+// Emphasis
+
+strong {
+    font-weight: $global-weight-normal !important;
+    color: $bookquotes-cyan-dark;
+}
+
+
+// Small
+
+$header-small-font-color: $bookquotes-red;
+small {
+    color: $header-small-font-color;
+}
+
+
+// Headings
+
+$header-color: $bookquotes-gray-dark;
+h2.title {
+    font-size: rem-calc(map-deep-get($header-styles, small, h2, font-size));
+}
+
+
+// Blockquotes
+
+$blockquote-color: $bookquotes-gray-dark;
+$blockquote-border: 1px solid $bookquotes-cyan-light;
+
+
+// Links
+
+$anchor-color: $bookquotes-gray-dark;
+$anchor-color-hover: $bookquotes-cyan-dark;
+
+
+// Citations
+
+cite a {
+    color: $bookquotes-cyan-dark;
+    &:hover {
+        color: $bookquotes-red;
+    }
+}
+
+
+// Lists
+
+$list-style-type: none;
+
+
+// Buttons
+
+$button-background: $bookquotes-cyan-dark;
+$button-background-hover: $bookquotes-red;
+
+
+// Topbar
+
+$topbar-background: $bookquotes-gray-dark;
+$topbar-submenu-background: $bookquotes-gray-light;
+$topbar-margin-bottom: rem-calc(20);
+$menu-item-color-active: $bookquotes-cyan-dark;
+$menu-item-background-active: transparent;
+.top-bar {
+    margin-bottom: $topbar-margin-bottom;
+    border-bottom: 2px solid $bookquotes-red;
+}
+.menu-text {
+    color: $bookquotes-red !important;
+}
+
+
+// Dropdown menu
+
+$dropdownmenu-arrows: false;
+$dropdownmenu-border: 1px solid $bookquotes-cyan-light;
+.menu > li {
+    > a {
+        color: $bookquotes-gray-light;
+        &:hover {
+            color: $bookquotes-cyan-dark;
+        }
+    }
+    > ul.submenu > li > a {
+        color: $bookquotes-gray-dark;
+        &:hover {
+            color: $bookquotes-cyan-dark;
+        }
+    }
+}
+
+
+// Accordion sidebar
+
+$accordion-plusminus: false;
+$accordion-title-font-size: rem-calc(14);
+$accordion-background: $bookquotes-gray-light;
+$accordion-item-color: $bookquotes-gray-dark;
+$accordion-item-background-hover: transparent;
+$accordion-content-border: 1px solid $bookquotes-cyan-light;
+
+.accordion-content ul {
+    list-style-type: none;
+    li {
+        margin-bottom: rem-calc(20);
+        &.active a {
+            color: $bookquotes-cyan-dark;
+        }
+    }
+}
+
+
+// Breadcrumb
+
+$breadcrumbs-item-uppercase: false;
+$breadcrumbs-item-font-size: rem-calc(12);
+$breadcrumbs-item-color: $bookquotes-gray-dark;
+.breadcrumbs li a {
+    &:hover {
+        text-decoration: none;
+        color: $bookquotes-cyan-dark;
+    }
+}
+
+
+// Quotes, Books lists
+
+$list-item-radius: rem-calc(10);
+.quote, .book {
+    padding: $global-padding;
+    background-color: $bookquotes-gray-light;
+    border-radius: $list-item-radius;
+    border: 1px solid $bookquotes-cyan-light;
+}
+.book {
+    text-align: center;
+}
+
+
+// Sharethis plugin
+
+.sharethis-inline-share-buttons {
+    margin-top: rem-calc(20);
+    margin-bottom: rem-calc(20);
+}
+
+
+// Tags
+
+.tags a {
+    font-size: rem-calc(12);
+    color: $bookquotes-cyan-dark;
+    &:hover {
+        color: $bookquotes-red;
+    }
+}
+
+
+// Footer
+
+footer {
+    color: $bookquotes-gray-light;
+    background-color: $bookquotes-gray-dark;
+    border-top: 2px solid $bookquotes-red;
+    text-align: center;
+    a {
+        color: $bookquotes-cyan-dark;
+        &:hover {
+            color: $bookquotes-red;
+        }
+    }
+}
+
+
+// Mobile
+
+@include breakpoint(medium down) {
+    html {
+        font-size: 200% !important;
+    }
+    .sticky {
+        position: static !important;
+        margin-top: 0 !important;
+    }
+}
+
+
+//////////////////////////////////////////////////////////
+// Foundation components
+//////////////////////////////////////////////////////////
+
+@include foundation-everything;

@@ -162,18 +162,18 @@ STATICFILES_FINDERS = (
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 ```
 
-  - **Set where to generate static assets with collectstatic:**
-
-```python
-STATICFILES_ROOT = os.path.join(BASE_DIR, 'static')
-```
-
-  - **Set where django looks for static assets:**
+  - **Set where orginal SCSS file is located:**
 
 ```python
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
+```
+
+  - **Set where the produced static files are generated (e.g. compiled CSS file):**
+
+```python
+STATICFILES_ROOT = os.path.join(BASE_DIR, 'static')
 ```
 
   - **Specify SCSS files to compile to CSS:**
