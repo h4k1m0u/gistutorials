@@ -1,5 +1,6 @@
 {% extends 'quotes/base.html' %}
 {% load breadcrumb %}
+{% load similar_quotes %}
 
 {% block title %}Quotes detail{% endblock %}
 
@@ -17,8 +18,8 @@
 
     <div class="sharethis-inline-share-buttons"></div>
 
-    <div class="row">
-        <div class="large-3 medium-3 small-3 large-push-0 medium-push-0 small-push-0 columns">
+    <div class="quote-footer row">
+        <div class="large-3 medium-6 small-6 columns">
             {% if quote.book %}
                 <h2 class="title">From</h2>
 
@@ -27,7 +28,7 @@
             {% endif %}
         </div>
 
-        <div class="large-3 medium-3 small-3 large-pull-0 medium-pull-0 small-pull-0 columns">
+        <div class="large-3 medium-6 small-6 columns">
             {% if quote.tags.count %}
                 <div class="tags">
                     <h2 class="title">Tags</h2>
@@ -36,6 +37,11 @@
                     {% endfor %}
                 </div>
             {% endif %}
+        </div>
+
+        <div class="large-6 medium-12 small-12 columns">
+            <h2 class="title">Similar quotes</h2>
+            {% similar_quotes %}
         </div>
     </div>
 {% endblock %}

@@ -73,6 +73,7 @@ cite a {
 // Lists
 
 $list-style-type: none;
+$list-side-margin: 0rem;
 
 
 // Buttons
@@ -153,7 +154,7 @@ $breadcrumbs-item-color: $bookquotes-gray-dark;
 // Quotes, Books lists
 
 $list-item-radius: rem-calc(10);
-.quote, .book {
+.quote, .book, .similar-quotes {
     padding: $global-padding;
     background-color: $bookquotes-gray-light;
     border-radius: $list-item-radius;
@@ -162,13 +163,13 @@ $list-item-radius: rem-calc(10);
 .book {
     text-align: center;
 }
-
-
-// Sharethis plugin
-
-.sharethis-inline-share-buttons {
-    margin-top: rem-calc(20);
+.quote, .sharethis-inline-share-buttons, .quote-footer {
     margin-bottom: rem-calc(20);
+}
+.similar-quote {
+    padding-top: rem-calc(10);
+    padding-bottom: rem-calc(10);
+    border-bottom: 1px solid $bookquotes-cyan-light;
 }
 
 
@@ -186,6 +187,10 @@ $list-item-radius: rem-calc(10);
 // Footer
 
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     color: $bookquotes-gray-light;
     background-color: $bookquotes-gray-dark;
     border-top: 2px solid $bookquotes-red;

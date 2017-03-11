@@ -1,0 +1,9 @@
+<ul class="similar-quotes">
+    {% for similar_quote in similar_quotes %}
+        {% if similar_quote.id != browsed_quote.id %}
+            <li class="similar-quote">
+                <a href="{% url 'quotes:quote-detail' pk=similar_quote.id slug=similar_quote.slug %}">{{ similar_quote.text | truncatewords:10 }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
