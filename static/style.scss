@@ -4,6 +4,8 @@
 
 @import 'foundation-sites/scss/settings/_settings.scss';
 @import 'foundation-sites/scss/foundation.scss';
+@import 'motion-ui/motion-ui.scss';
+
 
 //////////////////////////////////////////////////////////
 // Bookquotes
@@ -86,15 +88,35 @@ $button-background-hover: $bookquotes-red;
 
 $topbar-background: $bookquotes-gray-dark;
 $topbar-submenu-background: $bookquotes-gray-light;
-$topbar-margin-bottom: rem-calc(20);
 $menu-item-color-active: $bookquotes-cyan-dark;
 $menu-item-background-active: transparent;
 .top-bar {
-    margin-bottom: $topbar-margin-bottom;
     border-bottom: 2px solid $bookquotes-red;
 }
 .menu-text {
     color: $bookquotes-red !important;
+}
+
+
+// Slider
+
+$orbit-bullet-background: $bookquotes-cyan-dark;
+$orbit-bullet-background-active: $bookquotes-red;
+$orbit-control-background-hover: transparent;
+.orbit {
+    background-color: $bookquotes-gray-light;
+    margin-bottom: rem-calc(20);
+    border-bottom: 1px solid $bookquotes-cyan-light;
+    box-shadow: inset 0 0 1px 1px $bookquotes-cyan-light;
+
+    .orbit-previous, .orbit-next {
+        color: $bookquotes-cyan-dark !important;
+        &:hover,
+        &:active,
+        &:focus {
+            color: $bookquotes-red !important;
+        }
+    }
 }
 
 
@@ -170,6 +192,10 @@ $list-item-radius: rem-calc(10);
     padding-top: rem-calc(10);
     padding-bottom: rem-calc(10);
     border-bottom: 1px solid $bookquotes-cyan-light;
+
+    &:last-child {
+        border-bottom: 0;
+    }
 }
 
 

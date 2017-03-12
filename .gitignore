@@ -4,6 +4,7 @@ bower_components
 # bower components in static folder
 static/foundation-sites
 static/jquery
+static/motion-ui
 static/what-input
 static/.sass-cache
 

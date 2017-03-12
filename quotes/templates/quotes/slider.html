@@ -1,0 +1,30 @@
+<div id="slider" class="orbit" role="region" data-orbit>
+    <ul class="orbit-container">
+        <button class="orbit-previous">&#9664;&#xFE0E;</button>
+        <button class="orbit-next">&#9654;&#xFE0E;</button>
+
+        {% for random_quote in random_quotes %}
+            <li class="orbit-slide {% if forloop.first %} is-active {% endif %}">
+                <div class="text-center">
+                    <blockquote>
+                        <a href="{% url 'quotes:quote-detail' pk=random_quote.id slug=random_quote.slug %}">{{ random_quote.text | truncatewords:10 }}</a>
+                    </blockquote>
+                
+                    {% if random_quote.author %}
+                        <cite>
+                            <a href="{% url 'quotes:quotes-list' author=random_quote.author.slug %}">{{ random_quote.author.name }}</a>
+                        </cite>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <nav class="orbit-bullets">
+        <button data-slide="0" class="is-active"></button>
+        <button data-slide="1"></button>
+        <button data-slide="2"></button>
+        <button data-slide="3"></button>
+        <button data-slide="4"></button>
+    </nav>
+</div>

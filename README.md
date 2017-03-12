@@ -120,8 +120,10 @@ BOWER_COMPONENTS_ROOT = BASE_DIR
 ```python
 BOWER_INSTALLED_APPS = (
     'foundation-sites',
+    'motion-ui',
 )
 ```
+Note: `motion-ui` is needed by foundation's slider component (i.e. `Orbit`).
 
 - **Install the components:** `python manage.py bower install`
 
@@ -214,6 +216,9 @@ PIPELINE = {
 ```sass
 @import 'foundation-sites/scss/settings/_settings.scss';
 @import 'foundation-sites/scss/foundation.scss';
+@import 'motion-ui/motion-ui.scss';
+
+...
 
 @include foundation-everything;
 ```

@@ -1,4 +1,5 @@
 from django.db import models
+import random
 
 
 class Person(models.Model):
@@ -91,6 +92,30 @@ class Tag(models.Model):
         ordering = ('name',)
 
 
+class QuoteManager(models.Manager):
+    def random(self, n):
+        """
+            Pick 'n' quotes randomly.
+            'n' should be <= to number of quotes in the database.
+
+            Args:
+                n(int)
+            Returns:
+                random_quotes(QuerySet)
+        """
+        count = self.count()
+
+        # pick 'n' indices randomly
+        if n <= count:
+            random_indices = random.sample(range(count), n)
+        else:
+            random_indices = range(count)
+
+        random_quotes = self.filter(id__in=random_indices)
+
+        return random_quotes
+
+
 class Quote(models.Model):
     text = models.CharField(max_length=1000, unique=True)
     slug = models.SlugField(blank=True)
@@ -105,6 +130,9 @@ class Quote(models.Model):
     category = models.ForeignKey(Category, null=True, blank=True,
                                  on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
+
+    # custom manager
+    objects = QuoteManager()
 
     def __str__(self):
         """

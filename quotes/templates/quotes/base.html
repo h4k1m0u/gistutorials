@@ -1,6 +1,7 @@
 {% load static %}
 {% load pipeline %}
 {% load menu %}
+{% load slider %}
 {% load sidebar %}
 
  <!DOCTYPE html>
@@ -19,11 +20,11 @@
          </script>
          {% stylesheet 'style' %}
          {% javascript 'script' %}
-         <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=58b3464e22968b001106daf5&product=inline-share-buttons"></script>
      </head>
 
      <body>
          {% menu %}
+         {% slider %}
 
          <div class="row">
              <div class="large-3 columns" data-sticky-container>
