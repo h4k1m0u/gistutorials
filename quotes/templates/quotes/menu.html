@@ -1,62 +1,81 @@
 <div class="top-bar" id="main-menu">
-    <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">Book Quotes</li>
-
-            <li {% if path == '/' %} class="active" {% endif %}>
-                <a href="{% url 'quotes:quotes-list' %}">Quotes</a>
-            </li>
-
-            <li {% if 'category' in path or 'categories' in path %} class="active" {% endif %}>
-                <a href="{% url 'quotes:categories-list' %}">Categories</a>
-                <ul class="menu vertical">
-                    {% for category in categories %}
-                        <li>
-                            <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }} ({{ category.num_quotes }})</a>
-                        </li>
-                    {% endfor %}
-                    <li>
-                        <a href="{% url 'quotes:categories-list' %}">...</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li {% if 'book' in path or 'books' in path %} class="active" {% endif %}>
-                <a href="{% url 'quotes:books-list' %}">Books</a>
-                <ul class="menu vertical">
-                    {% for book in books %}
-                        <li>
-                            <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }} ({{ book.num_quotes }})</a>
-                        </li>
-                    {% endfor %}
-                    <li>
-                        <a href="{% url 'quotes:books-list' %}">...</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li {% if 'author' in path or 'authors' in path %} class="active" {% endif %}>
-                <a href="{% url 'quotes:authors-list' %}">Authors</a>
-                <ul class="menu vertical">
-                    {% for author in authors %}
-                        <li>
-                            <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }} ({{ author.num_quotes }})</a>
-                        </li>
-                    {% endfor %}
-                    <li>
-                        <a href="{% url 'quotes:authors-list' %}">...</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+    <div class="top-bar-title">
+        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+            <button class="menu-icon" type="button" data-toggle></button>
+        </span>
+        <strong>Book Quotes</strong>
     </div>
 
-    <div class="top-bar-right">
-        <form action="/" method="GET">
-            <ul class="menu">
-                <li><input type="text" name="search" value="{{ search.strip }}" placeholder="Search"/></li>
-                <li><input type="submit" value="Search" class="button"/></li>
+    <div id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li {% if path == '/' %} class="active" {% endif %}>
+                    <a href="{% url 'quotes:quotes-list' %}">Quotes</a>
+                </li>
+
+                <li {% if 'category' in path or 'categories' in path %} class="active" {% endif %}>
+                    <a href="{% url 'quotes:categories-list' %}">Categories</a>
+                    <ul class="menu vertical">
+                        {% for category in categories %}
+                            <li>
+                                <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }} ({{ category.num_quotes }})</a>
+                            </li>
+                        {% endfor %}
+                        <li>
+                            <a href="{% url 'quotes:categories-list' %}">...</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li {% if 'book' in path or 'books' in path %} class="active" {% endif %}>
+                    <a href="{% url 'quotes:books-list' %}">Books</a>
+                    <ul class="menu vertical">
+                        {% for book in books %}
+                            <li>
+                                <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }} ({{ book.num_quotes }})</a>
+                            </li>
+                        {% endfor %}
+                        <li>
+                            <a href="{% url 'quotes:books-list' %}">...</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li {% if 'author' in path or 'authors' in path %} class="active" {% endif %}>
+                    <a href="{% url 'quotes:authors-list' %}">Authors</a>
+                    <ul class="menu vertical">
+                        {% for author in authors %}
+                            <li>
+                                <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }} ({{ author.num_quotes }})</a>
+                            </li>
+                        {% endfor %}
+                        <li>
+                            <a href="{% url 'quotes:authors-list' %}">...</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
-        </form>
+        </div>
+
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li>
+                    <form action="/" method="GET" class="clearfix">
+                        <input type="text" name="search" value="{{ search.strip }}" placeholder="Search" class="float-left" />
+                        <input type="submit" value="Search" class="button" />
+                    </form>
+                </li>
+
+                {% if not user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'quotes:login' %}">Login</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'quotes:logout' %}">Logout <b>({{user.username}})</b></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </div>

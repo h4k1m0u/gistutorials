@@ -90,11 +90,14 @@ $topbar-background: $bookquotes-gray-dark;
 $topbar-submenu-background: $bookquotes-gray-light;
 $menu-item-color-active: $bookquotes-cyan-dark;
 $menu-item-background-active: transparent;
+$titlebar-icon-color: $bookquotes-red;
+$titlebar-icon-color-hover: $bookquotes-cyan-light;
 .top-bar {
     border-bottom: 2px solid $bookquotes-red;
-}
-.menu-text {
-    color: $bookquotes-red !important;
+
+    .top-bar-title strong {
+        color: $bookquotes-red;
+    }
 }
 
 

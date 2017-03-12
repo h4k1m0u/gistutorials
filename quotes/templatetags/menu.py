@@ -19,10 +19,14 @@ def menu(context):
     books = Book.objects.annotate(num_quotes=Count('quote'))\
         .order_by('-num_quotes')[:5].all()
 
+    # current user
+    user = context['user']
+
     return {
         'categories': categories,
         'books': books,
         'authors': authors,
         'search': context.request.GET.get('search', ''),
         'path': path,
+        'user': user,
     }

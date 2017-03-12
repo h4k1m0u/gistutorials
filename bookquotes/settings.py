@@ -126,8 +126,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 ###############################################################################
-# Hakim: Configure plugins
+# Hakim: Manage staticfiles with Bower & Pipeline
 ###############################################################################
 
 
@@ -201,3 +202,18 @@ PIPELINE = {
         'scss'
     )
 }
+
+
+###############################################################################
+# Hakim: Authentication
+###############################################################################
+
+
+# Where to redirect after login (if no GET[next])
+
+LOGIN_REDIRECT_URL = '/'
+
+
+# Where to redirect after logout (if no GET[next])
+
+LOGOUT_REDIRECT_URL = '/'
