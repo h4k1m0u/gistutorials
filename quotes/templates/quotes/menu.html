@@ -68,11 +68,14 @@
 
                 {% if not user.is_authenticated %}
                     <li>
-                        <a href="{% url 'quotes:login' %}">Login</a>
+                        <a href="{% url 'quotes:auth_login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'quotes:registration_register' %}">Register</a>
                     </li>
                 {% else %}
                     <li>
-                        <a href="{% url 'quotes:logout' %}">Logout <b>({{user.username}})</b></a>
+                        <a href="{% url 'quotes:auth_logout' %}">Logout <b>({{user.username}})</b></a>
                     </li>
                 {% endif %}
             </ul>

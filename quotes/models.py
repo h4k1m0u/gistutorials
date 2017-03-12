@@ -2,7 +2,7 @@ from django.db import models
 import random
 
 
-class Person(models.Model):
+class Author(models.Model):
     firstname = models.CharField(max_length=50, blank=True)
     lastname = models.CharField(max_length=50, blank=True)
     slug = models.SlugField(blank=True)
@@ -14,28 +14,18 @@ class Person(models.Model):
         """
         return self.firstname + ' ' + self.lastname
 
-    class Meta:
-        abstract = True
-
-        # name must be unique
-        unique_together = ('firstname', 'lastname',)
-
-        # order of drop-down list items
-        ordering = ('lastname', 'firstname')
-
-
-class Author(Person):
     def __str__(self):
         """
             Field to show in the admin site.
         """
         return self.name
 
+    class Meta:
+        # name must be unique
+        unique_together = ('firstname', 'lastname',)
 
-class Member(Person):
-    username = models.CharField(max_length=200, unique=True)
-    email = models.CharField(max_length=200, unique=True)
-    password = models.CharField(max_length=200)
+        # order of drop-down list items
+        ordering = ('lastname', 'firstname')
 
 
 class Book(models.Model):

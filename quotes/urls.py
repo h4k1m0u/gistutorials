@@ -1,14 +1,10 @@
 from django.conf.urls import url, include
 from . import views
-from django.contrib.auth import views as auth_views
-from django.contrib.auth.decorators import user_passes_test
+from registration.backends.simple.views import RegistrationView
+from .forms import CustomRegistrationFormUniqueEmail
 
 
 app_name = 'quotes'
-
-# prevent access to login page for authenticated users (redirect '/' no ?next)
-login_forbidden = user_passes_test(lambda user: user.is_anonymous(),
-                                   login_url='/', redirect_field_name=None)
 
 urlpatterns = [
     # quotes list view
@@ -36,8 +32,9 @@ urlpatterns = [
     # authors list view
     url(r'^authors$', views.AuthorsListView.as_view(), name='authors-list'),
 
-    # authentication
-    url(r'^login$', login_forbidden(auth_views.login),
-        {'template_name': 'quotes/login.html'}, name='login'),
-    url(r'^logout$', auth_views.logout, name='logout'),
+    # django-registration plugin (email address should be unique)
+    url(r'^accounts/register/$',
+        RegistrationView.as_view(form_class=CustomRegistrationFormUniqueEmail),
+        name='registration_register'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 ]

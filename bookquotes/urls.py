@@ -18,7 +18,9 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'^', include('quotes.urls')),
+    # django built-in administration
     url(r'^admin/', admin.site.urls),
-    # url(r'^accounts/', include('registration.backends.simple.urls')),
+
+    # quotes application
+    url(r'^', include('quotes.urls')),
 ]
