@@ -5,7 +5,7 @@ from .models import Quote, Book, Author, Category, Tag
 # customize admin views
 class QuoteAdmin(admin.ModelAdmin):
     # fields to show in admin listview
-    list_display = ('text', 'author', 'book', 'category', 'date')
+    list_display = ('text', 'author', 'book', 'category', 'date', 'published')
 
     # automatically slugify the text in the admin (js)
     prepopulated_fields = {'slug': ('text',)}

@@ -10,11 +10,11 @@ def similar_quotes(context):
     # get current quote by its id
     kwargs = context['view'].kwargs
     pk = kwargs.get('pk')
-    browsed_quote = Quote.objects.get(pk=pk)
+    browsed_quote = Quote.published_objects.get(pk=pk)
 
     # quotes in the same category
-    similar_quotes = Quote.objects.filter(category=browsed_quote.category)\
-        .order_by('text')[:5]
+    similar_quotes = Quote.published_objects.\
+        filter(category=browsed_quote.category).order_by('text')[:5]
 
     return {
         'browsed_quote': browsed_quote,

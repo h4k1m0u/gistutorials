@@ -19,7 +19,7 @@ class QuotesListView(ListView):
         """
             Return quotes ordered by date and filtered by url parameters.
         """
-        queryset = Quote.objects.order_by('-date')
+        queryset = Quote.published_objects.order_by('-date')
 
         # filter quotes by search query
         search = self.request.GET.get('search', '').strip()
@@ -84,6 +84,12 @@ class QuotesDetailView(DetailView):
     """
     template_name = 'quotes/quote-detail.html'
     model = Quote
+
+    def get_queryset(self):
+        """
+            Show only published quotes.
+        """
+        return super().get_queryset().filter(published=True)
 
 
 class BooksListView(ListView):

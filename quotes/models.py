@@ -128,6 +128,9 @@ class Tag(models.Model):
 
 
 class QuoteManager(models.Manager):
+    """
+        Model manager used on the front-end website only.
+    """
     def random(self, n):
         """
             Pick 'n' quotes randomly.
@@ -150,11 +153,18 @@ class QuoteManager(models.Manager):
 
         return random_quotes
 
+    def get_queryset(self):
+        """
+            Return only published quotes.
+        """
+        return super().get_queryset().filter(published=True)
+
 
 class Quote(models.Model):
     text = models.CharField(max_length=1000, unique=True)
     slug = models.SlugField(blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField(default=False)
 
     # foreign keys
     # can be empty: null in database & blank in forms
@@ -166,8 +176,9 @@ class Quote(models.Model):
                                  on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
 
-    # custom manager
-    objects = QuoteManager()
+    # default and custom managers
+    objects = models.Manager()
+    published_objects = QuoteManager()
 
     def __str__(self):
         """
