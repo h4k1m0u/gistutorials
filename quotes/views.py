@@ -1,8 +1,16 @@
 from django.views.generic import ListView, DetailView
 from .models import Quote, Category, Book, Author, Tag
+from .forms import SubmitQuoteForm
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from urllib import parse
 
 
 class QuotesListView(ListView):
+    """
+        List of quotes view.
+    """
     template_name = 'quotes/quotes-list.html'
     model = Quote
     context_object_name = 'quotes'
@@ -71,23 +79,68 @@ class QuotesListView(ListView):
 
 
 class QuotesDetailView(DetailView):
+    """
+        Quote detail view.
+    """
     template_name = 'quotes/quote-detail.html'
     model = Quote
 
 
 class BooksListView(ListView):
+    """
+        List of books view.
+    """
     template_name = 'quotes/books-list.html'
     model = Book
     context_object_name = 'books'
 
 
 class CategoriesListView(ListView):
+    """
+        List of categories view.
+    """
     template_name = 'quotes/categories-list.html'
     model = Category
     context_object_name = 'categories'
 
 
 class AuthorsListView(ListView):
+    """
+        List of authors view.
+    """
     template_name = 'quotes/authors-list.html'
     model = Author
     context_object_name = 'authors'
+
+
+def quote_submit(request):
+    """
+        Submit a quote view.
+    """
+    if request.method == 'POST':
+        # a quote was submited
+        form = SubmitQuoteForm(request.POST)
+
+        if form.is_valid():
+            # save quote to database
+            form.save()
+
+            return HttpResponseRedirect(reverse('quotes:quote-submitted'))
+    else:
+        # render the form
+        form = SubmitQuoteForm()
+
+    return render(request, 'quotes/quote-submit.html', {'form': form})
+
+
+def quote_submitted(request):
+    """
+        A quote was submitted view.
+    """
+    referer_path = parse.urlparse(request.META.get('HTTP_REFERER')).path
+
+    # check if coming from submit page
+    if referer_path == reverse('quotes:quote-submit'):
+        return render(request, 'quotes/quote-submitted.html')
+    else:
+        return HttpResponseRedirect(reverse('quotes:quotes-list'))

@@ -1,5 +1,6 @@
 from django.db import models
 import random
+from django.utils.text import slugify
 
 
 class Author(models.Model):
@@ -27,6 +28,17 @@ class Author(models.Model):
         # order of drop-down list items
         ordering = ('lastname', 'firstname')
 
+    def save(self, *args, **kwargs):
+        """
+            Save slug when saving model.
+            Slug saved only if not existant, to avoid duplicity of urls.
+        """
+        if not self.id:
+            # new object to create
+            self.slug = slugify(self.name)
+
+        super().save(*args, **kwargs)
+
 
 class Book(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -48,6 +60,17 @@ class Book(models.Model):
         # order of drop-down list items
         ordering = ('title',)
 
+    def save(self, *args, **kwargs):
+        """
+            Save slug when saving model.
+            Slug saved only if not existant, to avoid duplicity of urls.
+        """
+        if not self.id:
+            # new object to create
+            self.slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -66,6 +89,17 @@ class Category(models.Model):
         # plural form in admin view
         verbose_name_plural = 'categories'
 
+    def save(self, *args, **kwargs):
+        """
+            Save slug when saving model.
+            Slug saved only if not existant, to avoid duplicity of urls.
+        """
+        if not self.id:
+            # new object to create
+            self.slug = slugify(self.name)
+
+        super().save(*args, **kwargs)
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -80,6 +114,17 @@ class Tag(models.Model):
     class Meta:
         # order of drop-down list items
         ordering = ('name',)
+
+    def save(self, *args, **kwargs):
+        """
+            Save slug when saving model.
+            Slug saved only if not existant, to avoid duplicity of urls.
+        """
+        if not self.id:
+            # new object to create
+            self.slug = slugify(self.name)
+
+        super().save(*args, **kwargs)
 
 
 class QuoteManager(models.Manager):
@@ -133,3 +178,14 @@ class Quote(models.Model):
     class Meta:
         # order of drop-down list items
         ordering = ('text',)
+
+    def save(self, *args, **kwargs):
+        """
+            Save slug when saving model.
+            Slug saved only if not existant, to avoid duplicity of urls.
+        """
+        if not self.id:
+            # new object to create
+            self.slug = slugify(self.text)
+
+        super().save(*args, **kwargs)

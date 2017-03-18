@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from . import views
 from registration.backends.simple.views import RegistrationView
 from .forms import CustomRegistrationFormUniqueEmail
+from django.contrib.auth.decorators import login_required
 
 
 app_name = 'quotes'
@@ -37,4 +38,9 @@ urlpatterns = [
         RegistrationView.as_view(form_class=CustomRegistrationFormUniqueEmail),
         name='registration_register'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+
+    # submit a quote (only for authenticated users)
+    url(r'^submit$', login_required(views.quote_submit), name='quote-submit'),
+    url(r'^submitted$', login_required(views.quote_submitted),
+        name='quote-submitted'),
 ]
