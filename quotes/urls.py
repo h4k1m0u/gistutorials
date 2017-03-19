@@ -18,6 +18,8 @@ urlpatterns = [
         name='quotes-list'),
     url(r'^tag/(?P<tag>[-\w]+)/$', views.QuotesListView.as_view(),
         name='quotes-list'),
+    url(r'^member/(?P<member>[-\w]+)/$', views.QuotesListView.as_view(),
+        name='quotes-list'),
 
     # quote detail view
     url(r'^quote/(?P<pk>[0-9]+)/(?P<slug>[-\w]*)$',

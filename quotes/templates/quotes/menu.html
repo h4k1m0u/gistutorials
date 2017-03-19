@@ -78,6 +78,9 @@
                         <a href="{% url 'quotes:auth_logout' %}">Logout <b>({{user.username}})</b></a>
                     </li>
                     <li>
+                        <a href="{% url 'quotes:quotes-list' member=user.member.slug %}">My quotes</a>
+                    </li>
+                    <li>
                         <a href="{% url 'quotes:quote-submit' %}">Submit quote</a>
                     </li>
                 {% endif %}

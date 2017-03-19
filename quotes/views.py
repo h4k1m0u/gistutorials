@@ -46,6 +46,11 @@ class QuotesListView(ListView):
         if tag:
             queryset = queryset.filter(tags__slug=tag)
 
+        # filter quotes by member slug
+        member = self.kwargs.get('member')
+        if member:
+            queryset = queryset.filter(member__slug=member)
+
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -128,8 +133,13 @@ def quote_submit(request):
         form = SubmitQuoteForm(request.POST)
 
         if form.is_valid():
-            # save quote to database
-            form.save()
+            # save quote & who submitted it to database
+            quote = form.save(commit=False)
+            quote.member = request.user.member
+            quote.save()
+
+            # required for m2m when commit=False
+            form.save_m2m()
 
             return HttpResponseRedirect(reverse('quotes:quote-submitted'))
     else:
