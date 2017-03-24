@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Author(models.Model):
     firstname = models.CharField(max_length=50, blank=True)
     lastname = models.CharField(max_length=50, blank=True)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
 
     @property
     def name(self):
@@ -43,7 +43,7 @@ class Author(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
     isbn = models.CharField(max_length=10, unique=True)
 
     # foreign keys
@@ -75,7 +75,7 @@ class Book(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
 
     def __str__(self):
         """
@@ -104,7 +104,7 @@ class Category(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
 
     def __str__(self):
         """
@@ -132,7 +132,7 @@ class Member(models.Model):
     """
         Additional fields for the user model.
     """
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
 
     # foreign keys
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -179,7 +179,7 @@ class QuoteManager(models.Manager):
 
 class Quote(models.Model):
     text = models.CharField(max_length=1000, unique=True)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=False)
 
