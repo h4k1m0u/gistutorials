@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm3gq=zljfp91j#ecz!dh@7lu=8=dx&j7-2+!n$_i4z))jrb8gq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 # Application definition
 
 INSTALLED_APPS = [
+    'debug_toolbar',
     'pipeline',
     'djangobower',
     'quotes.apps.QuotesConfig',
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -217,3 +219,13 @@ LOGIN_REDIRECT_URL = '/'
 # Where to redirect after logout (if no GET[next])
 
 LOGOUT_REDIRECT_URL = '/'
+
+
+###############################################################################
+# Hakim: Debug bar
+###############################################################################
+
+
+# Whom to show the debug bar for
+
+INTERNAL_IPS = ('127.0.0.1',)
