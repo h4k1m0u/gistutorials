@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Author(models.Model):
     firstname = models.CharField(max_length=50, blank=True)
     lastname = models.CharField(max_length=50, blank=True)
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(blank=True, editable=False)
 
     @property
     def name(self):
@@ -36,14 +36,14 @@ class Author(models.Model):
         """
         if not self.id:
             # new object to create
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.name)[:50]
 
         super().save(*args, **kwargs)
 
 
 class Book(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(blank=True, editable=False)
     isbn = models.CharField(max_length=10, unique=True)
 
     # foreign keys
@@ -68,14 +68,14 @@ class Book(models.Model):
         """
         if not self.id:
             # new object to create
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.title)[:50]
 
         super().save(*args, **kwargs)
 
 
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(blank=True, editable=False)
 
     def __str__(self):
         """
@@ -97,14 +97,14 @@ class Category(models.Model):
         """
         if not self.id:
             # new object to create
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.name)[:50]
 
         super().save(*args, **kwargs)
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(blank=True, editable=False)
 
     def __str__(self):
         """
@@ -123,7 +123,7 @@ class Tag(models.Model):
         """
         if not self.id:
             # new object to create
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.name)[:50]
 
         super().save(*args, **kwargs)
 
@@ -132,7 +132,7 @@ class Member(models.Model):
     """
         Additional fields for the user model.
     """
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(blank=True, editable=False)
 
     # foreign keys
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -179,7 +179,7 @@ class QuoteManager(models.Manager):
 
 class Quote(models.Model):
     text = models.CharField(max_length=1000, unique=True)
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(blank=True, editable=False)
     date = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=False)
 
@@ -216,6 +216,6 @@ class Quote(models.Model):
         """
         if not self.id:
             # new object to create
-            self.slug = slugify(self.text)
+            self.slug = slugify(self.text)[:50]
 
         super().save(*args, **kwargs)
