@@ -14,6 +14,7 @@ class QuotesListView(ListView):
     template_name = 'quotes/quotes-list.html'
     model = Quote
     context_object_name = 'quotes'
+    paginate_by = 12
 
     def get_queryset(self):
         """
@@ -104,6 +105,7 @@ class BooksListView(ListView):
     template_name = 'quotes/books-list.html'
     model = Book
     context_object_name = 'books'
+    paginate_by = 12
 
 
 class CategoriesListView(ListView):

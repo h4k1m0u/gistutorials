@@ -226,6 +226,22 @@ $list-item-radius: rem-calc(10);
 }
 
 
+// Pagination
+
+$pagination-item-color: $bookquotes-cyan-dark;
+$pagination-item-color-current: $bookquotes-red;
+$pagination-item-background-hover: transparent;
+$pagination-item-background-current: transparent;
+
+.pagination {
+    a {
+        &:hover {
+            color: $bookquotes-red;
+        }
+    }
+}
+
+
 // Footer
 
 footer {
