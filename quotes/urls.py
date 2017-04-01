@@ -47,12 +47,24 @@ urlpatterns = [
         name='quote-submitted'),
 
     # autocomplete fields
-    url(r'^book-autocomplete/$', views.BookAutocomplete.as_view(),
+    url(r'^book-autocomplete/$',
+        login_required(views.BookAutocomplete.as_view(
+            create_field='title'
+        )),
         name='book-autocomplete'),
-    url(r'^author-autocomplete/$', views.AuthorAutocomplete.as_view(),
+    url(r'^author-autocomplete/$',
+        login_required(views.AuthorAutocomplete.as_view(
+            create_field='lastname'
+        )),
         name='author-autocomplete'),
-    url(r'^category-autocomplete/$', views.CategoryAutocomplete.as_view(),
+    url(r'^category-autocomplete/$',
+        login_required(views.CategoryAutocomplete.as_view(
+            create_field='name'
+        )),
         name='category-autocomplete'),
-    url(r'^tags-autocomplete/$', views.TagsAutocomplete.as_view(),
+    url(r'^tags-autocomplete/$',
+        login_required(views.TagsAutocomplete.as_view(
+            create_field='name'
+        )),
         name='tags-autocomplete'),
 ]
