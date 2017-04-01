@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'debug_toolbar',
     'pipeline',
     'djangobower',

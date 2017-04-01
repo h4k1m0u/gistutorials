@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from urllib import parse
+from dal import autocomplete
 
 
 class QuotesListView(ListView):
@@ -162,3 +163,59 @@ def quote_submitted(request):
         return render(request, 'quotes/quote-submitted.html')
     else:
         return HttpResponseRedirect(reverse('quotes:quotes-list'))
+
+
+class BookAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        """
+            Books to show in the autocomplete field.
+        """
+        queryset = Book.objects.all()
+
+        # filter by user's input
+        if self.q:
+            queryset = queryset.filter(title__istartswith=self.q)
+
+        return queryset
+
+
+class AuthorAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        """
+            Authors to show in the autocomplete field.
+        """
+        queryset = Author.objects.all()
+
+        # filter by user's input
+        if self.q:
+            queryset = queryset.filter(lastname__istartswith=self.q)
+
+        return queryset
+
+
+class CategoryAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        """
+            Categories to show in the autocomplete field.
+        """
+        queryset = Category.objects.all()
+
+        # filter by user's input
+        if self.q:
+            queryset = queryset.filter(name__istartswith=self.q)
+
+        return queryset
+
+
+class TagsAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        """
+            Tags to show in the autocomplete field.
+        """
+        queryset = Tag.objects.all()
+
+        # filter by user's input
+        if self.q:
+            queryset = queryset.filter(name__istartswith=self.q)
+
+        return queryset

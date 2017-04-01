@@ -45,4 +45,14 @@ urlpatterns = [
     url(r'^submit$', login_required(views.quote_submit), name='quote-submit'),
     url(r'^submitted$', login_required(views.quote_submitted),
         name='quote-submitted'),
+
+    # autocomplete fields
+    url(r'^book-autocomplete/$', views.BookAutocomplete.as_view(),
+        name='book-autocomplete'),
+    url(r'^author-autocomplete/$', views.AuthorAutocomplete.as_view(),
+        name='author-autocomplete'),
+    url(r'^category-autocomplete/$', views.CategoryAutocomplete.as_view(),
+        name='category-autocomplete'),
+    url(r'^tags-autocomplete/$', views.TagsAutocomplete.as_view(),
+        name='tags-autocomplete'),
 ]

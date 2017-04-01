@@ -1,6 +1,7 @@
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
 from .models import Quote
+from dal import autocomplete
 
 
 class CustomRegistrationFormUniqueEmail(RegistrationFormUniqueEmail):
@@ -15,6 +16,10 @@ class CustomRegistrationFormUniqueEmail(RegistrationFormUniqueEmail):
             self.fields[fieldname].help_text = None
 
 
+def get_choice_list():
+    return ['France', 'Fiji', 'Finland', 'Switzerland']
+
+
 class SubmitQuoteForm(forms.ModelForm):
     """
         Form to submit a quote for moderation.
@@ -22,3 +27,17 @@ class SubmitQuoteForm(forms.ModelForm):
     class Meta:
         model = Quote
         fields = ['text', 'book', 'author', 'category', 'tags']
+        widgets = {
+            'book': autocomplete.ModelSelect2(
+                url='quotes:book-autocomplete'
+            ),
+            'author': autocomplete.ModelSelect2(
+                url='quotes:author-autocomplete'
+            ),
+            'category': autocomplete.ModelSelect2(
+                url='quotes:category-autocomplete'
+            ),
+            'tags': autocomplete.ModelSelect2Multiple(
+                url='quotes:tags-autocomplete'
+            ),
+        }
