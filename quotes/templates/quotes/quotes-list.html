@@ -20,6 +20,10 @@
             {% for quote in quotes %}
                 <div class="column column-block">
                     <div class="quote">
+                        <time>
+                            {{ quote.date | date:"M d, Y" }}
+                        </time>
+
                         <blockquote>
                             <a href="{% url 'quotes:quote-detail' pk=quote.id slug=quote.slug %}">{{ quote.text | truncatewords:10 }}</a>
                         </blockquote>

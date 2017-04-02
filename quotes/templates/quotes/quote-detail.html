@@ -8,7 +8,12 @@
     {% breadcrumb %}
 
     <div class="quote">
+        <time>
+            {{ quote.date | date:"M d, Y" }}
+        </time>
+
         <blockquote>{{ quote.text }}</blockquote>
+
         {% if quote.author %}
             <cite>
                 <a href="{% url 'quotes:quotes-list' author=quote.author.slug %}">{{ quote.author.name }}</a>
