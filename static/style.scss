@@ -2,9 +2,17 @@
 // Foundation
 //////////////////////////////////////////////////////////
 
+// location of the foundation-icon-fonts folder
+
+$fi-path: 'foundation-icon-fonts';
+
+
+// load librairies
+
 @import 'foundation-sites/scss/settings/_settings.scss';
 @import 'foundation-sites/scss/foundation.scss';
 @import 'motion-ui/motion-ui.scss';
+@import 'foundation-icon-fonts/_foundation-icons.scss';
 
 
 //////////////////////////////////////////////////////////
