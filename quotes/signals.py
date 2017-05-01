@@ -5,7 +5,7 @@ from .models import Member, Quote
 from django.utils.text import slugify
 import tweepy
 from django.urls import reverse
-from django.conf import settings
+from django.contrib.sites.models import Site
 
 
 @receiver(post_save, sender=User)
@@ -35,9 +35,10 @@ def tweet_quote(sender, instance, created, **kwargs):
         api = tweepy.API(auth)
 
         # tweet quote's text
+        domain = Site.objects.get_current().domain
         api.update_status(
             status=instance.text + ' ' +
-            settings.BASE_URL +
+            domain +
             reverse('quotes:quote-detail', kwargs={'pk': instance.id,
                                                    'slug': instance.slug})
         )

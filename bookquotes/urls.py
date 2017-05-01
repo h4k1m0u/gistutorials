@@ -24,6 +24,9 @@ urlpatterns = [
 
     # quotes application
     url(r'^', include('quotes.urls')),
+
+    # contact
+    url(r'^contact/', include('contact_form.urls')),
 ]
 
 # show the debug bar (sql queries) in debug mode only

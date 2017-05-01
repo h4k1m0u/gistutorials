@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'pipeline',
     'djangobower',
     'quotes.apps.QuotesConfig',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -235,9 +236,28 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 
 ###############################################################################
-# Hakim: Tweet quotes
+# Hakim: Contact form
 ###############################################################################
 
 
-# base url
-BASE_URL = 'bookquotes.me'
+# site id (needed to get url domain)
+SITE_ID = 1
+
+
+# mail server credentials
+
+EMAIL_HOST = 'mail.privateemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'admin@bookquotes.me'
+EMAIL_HOST_PASSWORD = 'TY96ww2S'
+EMAIL_USE_TLS = True
+
+
+# who send the email
+
+DEFAULT_FROM_EMAIL = 'admin@bookquotes.me'
+
+
+# who receive the email
+
+MANAGERS = [('Admin', 'admin@bookquotes.me'), ('Hakim', 'h.benoudjit@gmail.com')]
