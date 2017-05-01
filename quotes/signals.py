@@ -4,6 +4,8 @@ from django.dispatch import receiver
 from .models import Member, Quote
 from django.utils.text import slugify
 import tweepy
+from django.urls import reverse
+from django.conf import settings
 
 
 @receiver(post_save, sender=User)
@@ -18,9 +20,9 @@ def create_member(sender, instance, created, **kwargs):
 @receiver(post_save, sender=Quote)
 def tweet_quote(sender, instance, created, **kwargs):
     """
-        Tweet a quote when it is created.
+        Tweet a quote when it is created and published.
     """
-    if created:
+    if created and instance.published:
         # bookquotes twitter app credentials
         consumer_key = 'WIjmRBgixAOxURx5BkaixMDM0'
         consumer_secret = '4xRw9KPFmxyFa07tq5FDgStYPQv3wvKppiXRtlsVVovgs3MWMw'
@@ -33,4 +35,9 @@ def tweet_quote(sender, instance, created, **kwargs):
         api = tweepy.API(auth)
 
         # tweet quote's text
-        api.update_status(status=instance.text)
+        api.update_status(
+            status=instance.text + ' ' +
+            settings.BASE_URL +
+            reverse('quotes:quote-detail', kwargs={'pk': instance.id,
+                                                   'slug': instance.slug})
+        )

@@ -232,3 +232,12 @@ LOGOUT_REDIRECT_URL = '/'
 # Whom to show the debug bar for
 
 INTERNAL_IPS = ('127.0.0.1',)
+
+
+###############################################################################
+# Hakim: Tweet quotes
+###############################################################################
+
+
+# base url
+BASE_URL = 'bookquotes.me'
