@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'dal',
     'dal_select2',
     'debug_toolbar',

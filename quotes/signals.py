@@ -36,9 +36,10 @@ def tweet_quote(sender, instance, created, **kwargs):
 
         # tweet quote's text
         domain = Site.objects.get_current().domain
-        api.update_status(
-            status=instance.text + ' ' +
+        api.update_status(status=(
+            instance.author.firstname + ' ' + instance.author.lastname + ': ' +
+            instance.text + ' ' +
             domain +
             reverse('quotes:quote-detail', kwargs={'pk': instance.id,
                                                    'slug': instance.slug})
-        )
+        ))

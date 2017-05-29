@@ -67,4 +67,7 @@ urlpatterns = [
             create_field='name'
         )),
         name='tags-autocomplete'),
+
+    # api
+    url(r'^api/', include('rest_framework.urls')),
 ]
