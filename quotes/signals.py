@@ -34,12 +34,17 @@ def tweet_quote(sender, instance, created, **kwargs):
         auth.set_access_token(access_token, access_token_secret)
         api = tweepy.API(auth)
 
-        # tweet quote's text
+        # tweet and url
         domain = Site.objects.get_current().domain
-        api.update_status(status=(
-            instance.author.firstname + ' ' + instance.author.lastname + ': ' +
-            instance.text + ' ' +
-            domain +
-            reverse('quotes:quote-detail', kwargs={'pk': instance.id,
-                                                   'slug': instance.slug})
-        ))
+        if instance.author:
+            author = instance.author.firstname + ' ' + instance.author.lastname
+            tweet = author + ': ' + instance.text
+        else:
+            tweet = instance.text
+        tweet = tweet + ' ' if len(tweet) <= 140-24 else tweet[:140-26] + '.. '
+        url = domain + reverse('quotes:quote-detail', kwargs={'pk': instance.id, 'slug': instance.slug})
+        api.update_status(status=
+            # status is 140 characters (incl. 23 characters for url)
+            tweet +
+            url
+        )
