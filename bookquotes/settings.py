@@ -261,4 +261,19 @@ DEFAULT_FROM_EMAIL = 'admin@bookquotes.me'
 
 # who receive the email
 
-MANAGERS = [('Admin', 'admin@bookquotes.me'), ('Hakim', 'h.benoudjit@gmail.com')]
+MANAGERS = [
+    ('Admin', 'admin@bookquotes.me'),
+    ('Hakim', 'h.benoudjit@gmail.com')
+]
+
+
+###############################################################################
+# Hakim: REST API
+###############################################################################
+
+
+# pagination
+
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 10
+}

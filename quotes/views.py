@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from urllib import parse
 from dal import autocomplete
+from rest_framework import viewsets
+from .serializers import QuoteSerializer
 
 
 class QuotesListView(ListView):
@@ -219,3 +221,11 @@ class TagsAutocomplete(autocomplete.Select2QuerySetView):
             queryset = queryset.filter(name__istartswith=self.q)
 
         return queryset
+
+
+class QuoteViewSet(viewsets.ModelViewSet):
+    """
+    REST API Quotes view.
+    """
+    queryset = Quote.objects.all().order_by('-date')
+    serializer_class = QuoteSerializer
