@@ -27,6 +27,9 @@ urlpatterns = [
 
     # contact
     url(r'^contact/', include('contact_form.urls')),
+
+    # social media authentication (oauth)
+    url(r'^oauth/', include('social_django.urls')),
 ]
 
 # show the debug bar (sql queries) in debug mode only

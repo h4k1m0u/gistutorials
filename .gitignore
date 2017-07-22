@@ -6,6 +6,7 @@ static/foundation-sites
 static/jquery
 static/motion-ui
 static/what-input
+static/rest_framework
 static/.sass-cache
 
 # python

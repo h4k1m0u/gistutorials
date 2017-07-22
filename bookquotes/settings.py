@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 # Application definition
 
 INSTALLED_APPS = [
+    'social_django',
     'rest_framework',
     'dal',
     'dal_select2',
@@ -168,7 +169,7 @@ BOWER_COMPONENTS_ROOT = BASE_DIR
 # Apps to install with bower
 
 BOWER_INSTALLED_APPS = (
-    'foundation-sites',
+    'foundation-sites#6.3',
     'motion-ui',
     'foundation-icon-fonts'
 )
@@ -277,3 +278,28 @@ MANAGERS = [
 REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
+
+
+###############################################################################
+# Hakim: Social media authentication (oauth)
+###############################################################################
+
+
+# fall back to django model auth if not oauth
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# apps tokens
+
+SOCIAL_AUTH_TWITTER_KEY = 'eXHfVhSYHlGVNBZSVnxBmXpUb'
+SOCIAL_AUTH_TWITTER_SECRET = 'dNGrhzPvxv7yDuFXQvrcEOOQNaglfPLPC8KjxbmE5MA62JneCC'
+SOCIAL_AUTH_FACEBOOK_KEY = '1434286176666478'
+SOCIAL_AUTH_FACEBOOK_SECRET = '25e1daa285a81e3b5596f6320d383456'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '55725089997-djgj308bu25cpiarmrfn16l2r4iqib0r.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'bKxLfLFedQNneZo31CkyCpOX'
