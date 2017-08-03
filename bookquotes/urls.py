@@ -22,8 +22,11 @@ urlpatterns = [
     # django built-in administration
     url(r'^admin/', admin.site.urls),
 
-    # quotes application
+    # applications
     url(r'^', include('quotes.urls')),
+    # url(r'^quotes/', include('quotes.urls')),
+    url(r'^members/', include('members.urls')),
+    # url(r'^articles/', include('articles.urls')),
 
     # contact
     url(r'^contact/', include('contact_form.urls')),

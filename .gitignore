@@ -1,4 +1,4 @@
-*.swp
+*.sw*
 bower_components
 
 # bower components in static folder

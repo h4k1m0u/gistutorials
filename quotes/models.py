@@ -1,7 +1,7 @@
 from django.db import models
 import random
 from django.utils.text import slugify
-from django.contrib.auth.models import User
+from members.models import Member
 
 
 class Author(models.Model):
@@ -126,22 +126,6 @@ class Tag(models.Model):
             self.slug = slugify(self.name)[:50]
 
         super().save(*args, **kwargs)
-
-
-class Member(models.Model):
-    """
-        Additional fields for the user model.
-    """
-    slug = models.SlugField(blank=True, editable=False)
-
-    # foreign keys
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        """
-            Field to show in the related models admin site.
-        """
-        return self.user.username
 
 
 class QuoteManager(models.Manager):

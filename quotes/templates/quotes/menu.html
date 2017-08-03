@@ -13,34 +13,6 @@
                     <a href="{% url 'quotes:quotes-list' %}">Quotes</a>
                 </li>
 
-                <li {% if 'category' in path or 'categories' in path %} class="active" {% endif %}>
-                    <a href="{% url 'quotes:categories-list' %}">Categories</a>
-                    <ul class="menu vertical">
-                        {% for category in categories %}
-                            <li>
-                                <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }} ({{ category.num_quotes }})</a>
-                            </li>
-                        {% endfor %}
-                        <li>
-                            <a href="{% url 'quotes:categories-list' %}">...</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li {% if 'book' in path or 'books' in path %} class="active" {% endif %}>
-                    <a href="{% url 'quotes:books-list' %}">Books</a>
-                    <ul class="menu vertical">
-                        {% for book in books %}
-                            <li>
-                                <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }} ({{ book.num_quotes }})</a>
-                            </li>
-                        {% endfor %}
-                        <li>
-                            <a href="{% url 'quotes:books-list' %}">...</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li {% if 'author' in path or 'authors' in path %} class="active" {% endif %}>
                     <a href="{% url 'quotes:authors-list' %}">Authors</a>
                     <ul class="menu vertical">
@@ -68,14 +40,14 @@
 
                 {% if not user.is_authenticated %}
                     <li>
-                        <a href="{% url 'quotes:auth_login' %}">Login</a>
+                        <a href="{% url 'members:auth_login' %}">Login</a>
                     </li>
                     <li>
-                        <a href="{% url 'quotes:registration_register' %}">Register</a>
+                        <a href="{% url 'members:registration_register' %}">Register</a>
                     </li>
                 {% else %}
                     <li>
-                        <a href="{% url 'quotes:auth_logout' %}">Logout <b>({{user.username}})</b></a>
+                        <a href="{% url 'members:auth_logout' %}">Logout <b>({{user.username}})</b></a>
                     </li>
                     <li>
                         <a href="{% url 'quotes:quotes-list' member=user.member.slug %}">My quotes</a>

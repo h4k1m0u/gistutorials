@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'pipeline',
     'djangobower',
     'quotes.apps.QuotesConfig',
+    'members.apps.MembersConfig',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
