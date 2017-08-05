@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm3gq=zljfp91j#ecz!dh@7lu=8=dx&j7-2+!n$_i4z))jrb8gq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 
@@ -62,10 +62,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'bookquotes.urls'
 
+
+###############################################################################
+# Hakim: Look for base template at root of project
+###############################################################################
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # Look for base template at root of project
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +80,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # Look for base templatetags at root of project
+            'libraries': {
+                'menu': 'templatetags.menu',
+                'slider': 'templatetags.slider',
+            }
         },
     },
 ]

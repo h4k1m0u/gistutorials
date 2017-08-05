@@ -23,12 +23,13 @@ bg=red</panel_attributes>
       <x>430</x>
       <y>60</y>
       <w>150</w>
-      <h>120</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>Article
 --
 id
 text
+title
 date
 category_id
 member_id
@@ -93,12 +94,12 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>170</y>
+      <y>180</y>
       <w>30</w>
-      <h>330</h>
+      <h>320</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;310.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;300.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

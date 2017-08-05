@@ -6,7 +6,7 @@ from quotes.models import Category, Book, Author
 register = template.Library()
 
 
-@register.inclusion_tag('quotes/menu.html', takes_context=True)
+@register.inclusion_tag('menu.html', takes_context=True)
 def menu(context):
     # url path
     path = context['request'].path

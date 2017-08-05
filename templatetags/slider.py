@@ -5,7 +5,7 @@ from quotes.models import Quote
 register = template.Library()
 
 
-@register.inclusion_tag('quotes/slider.html')
+@register.inclusion_tag('slider.html')
 def slider():
     # Pick five tags randomly
     random_quotes = Quote.published_objects.random(5)
