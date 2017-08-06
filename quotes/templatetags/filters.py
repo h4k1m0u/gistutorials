@@ -6,8 +6,8 @@ from quotes.models import Category, Book, Author
 register = template.Library()
 
 
-@register.inclusion_tag('quotes/sidebar.html', takes_context=True)
-def sidebar(context):
+@register.inclusion_tag('quotes/filters.html', takes_context=True)
+def filters(context):
     # browsed author, book, category (when not in auth forms)
     view = context.get('view')
     if view:

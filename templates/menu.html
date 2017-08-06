@@ -9,22 +9,12 @@
     <div id="responsive-menu">
         <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li {% if path == '/' %} class="active" {% endif %}>
+                <li {% if app_name == 'quotes' %} class="active" {% endif %}>
                     <a href="{% url 'quotes:quotes-list' %}">Quotes</a>
                 </li>
 
-                <li {% if 'author' in path or 'authors' in path %} class="active" {% endif %}>
-                    <a href="{% url 'quotes:authors-list' %}">Authors</a>
-                    <ul class="menu vertical">
-                        {% for author in authors %}
-                            <li>
-                                <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }} ({{ author.num_quotes }})</a>
-                            </li>
-                        {% endfor %}
-                        <li>
-                            <a href="{% url 'quotes:authors-list' %}">...</a>
-                        </li>
-                    </ul>
+                <li {% if app_name == 'articles' %} class="active" {% endif %}>
+                    <a href="{% url 'articles:articles-list' %}">Articles</a>
                 </li>
             </ul>
         </div>

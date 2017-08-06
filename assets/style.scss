@@ -205,10 +205,10 @@ $breadcrumbs-item-color: $bookquotes-gray-dark;
 }
 
 
-// Quotes, Books lists
+// Quotes, Books, Articles lists
 
 $list-item-radius: rem-calc(10);
-.quote, .book, .similar-quotes {
+.quote, .book, .similar-quotes, .article {
     padding: $global-padding;
     background-color: $bookquotes-gray-light;
     border-radius: $list-item-radius;
@@ -217,7 +217,7 @@ $list-item-radius: rem-calc(10);
 .book {
     text-align: center;
 }
-.quote, .sharethis-inline-share-buttons, .quote-footer {
+.quote, .article, .sharethis-inline-share-buttons, .quote-footer, .article-footer {
     margin-bottom: rem-calc(20);
 }
 .similar-quote {

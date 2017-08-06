@@ -25,8 +25,8 @@ urlpatterns = [
     # applications
     url(r'^', include('quotes.urls')),
     # url(r'^quotes/', include('quotes.urls')),
+    url(r'^articles/', include('articles.urls')),
     url(r'^members/', include('members.urls')),
-    # url(r'^articles/', include('articles.urls')),
 
     # contact
     url(r'^contact/', include('contact_form.urls')),

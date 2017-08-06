@@ -2,7 +2,6 @@
 {% load pipeline %}
 {% load menu %}
 {% load slider %}
-{% load sidebar %}
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +29,8 @@
 
             <div class="row">
                 <div class="large-3 columns" data-sticky-container>
-                    {% sidebar %}
+                    {% block sidebar %}
+                    {% endblock %}
                 </div>
 
                 <div class="large-9 columns">

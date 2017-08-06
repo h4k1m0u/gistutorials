@@ -191,7 +191,7 @@ class Quote(models.Model):
 
     class Meta:
         # order of drop-down list items
-        ordering = ('text',)
+        ordering = ('-date', '-id')
 
     def save(self, *args, **kwargs):
         """

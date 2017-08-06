@@ -8,8 +8,8 @@ register = template.Library()
 
 @register.inclusion_tag('menu.html', takes_context=True)
 def menu(context):
-    # url path
-    path = context['request'].path
+    # app name
+    app_name = context['request'].resolver_match.app_name
 
     # populate menu with top five entries by # of quotes
     authors = Author.objects.annotate(num_quotes=Count('quote'))\
@@ -27,6 +27,6 @@ def menu(context):
         'books': books,
         'authors': authors,
         'search': context.request.GET.get('search', ''),
-        'path': path,
         'user': user,
+        'app_name': app_name,
     }

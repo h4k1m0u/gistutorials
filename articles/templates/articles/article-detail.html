@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="article">
+        <time>
+            {{ article.date | date:"M d, Y" }}
+        </time>
+
+        <blockquote>{{ article.text|safe }}</blockquote>
+    </div>
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <div class="article-footer row">
+        <div class="large-3 medium-6 small-6 columns">
+            {% if article.tags.count %}
+                <div class="tags">
+                    <h2 class="title">Tags</h2>
+                    {% for tag in article.tags.all %}
+                        <a href="{% url 'articles:articles-list' tag=tag.slug %}">#{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

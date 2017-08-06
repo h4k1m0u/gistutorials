@@ -227,5 +227,5 @@ class QuoteViewSet(viewsets.ModelViewSet):
     """
     REST API Quotes view.
     """
-    queryset = Quote.objects.all().order_by('-date')
+    queryset = Quote.published_objects.all().order_by('-date')
     serializer_class = QuoteSerializer
