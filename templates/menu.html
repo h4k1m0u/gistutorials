@@ -11,6 +11,17 @@
             <ul class="dropdown menu" data-dropdown-menu>
                 <li {% if app_name == 'quotes' %} class="active" {% endif %}>
                     <a href="{% url 'quotes:quotes-list' %}">Quotes</a>
+                    <ul class="menu vertical">
+                        <li>
+                            <a href="{% url 'quotes:categories-list' %}">By category</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'quotes:books-list' %}">By book</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'quotes:authors-list' %}">By author</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li {% if app_name == 'articles' %} class="active" {% endif %}>
