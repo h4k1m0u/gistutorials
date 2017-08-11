@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="large-6 columns">
+        <ul>
+            <li>
+                Contact us: <a href="{% url 'contact_form' %}"><i class="fi-mail size-60"></i></a>
+            </li>
+            <li>
+                By <a href="https://github.com/h4k1m0u" target="_blank">h4k1m0u</a>
+            </li>
+            <li>
+                Follow us: <a href="https://twitter.com/bookquotes_me" target="_blank"><i class="fi-social-twitter size-60"></i></a> 
+            </li>
+        </ul>
+    </div>
+
+    <div class="large-6 columns">
+        <ul class="menu vertical">
+            <li>
+                <a href="{% url 'quotes:quotes-list' %}">All quotes</a>
+            </li>
+            <li>
+                <a href="{% url 'quotes:categories-list' %}">Quotes by category</a>
+            </li>
+            <li>
+                <a href="{% url 'quotes:books-list' %}">Quotes by book</a>
+            </li>
+            <li>
+                <a href="{% url 'quotes:authors-list' %}">Quotes by author</a>
+            </li>
+        </ul>
+    </div>
+</div>

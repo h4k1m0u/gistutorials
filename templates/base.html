@@ -2,6 +2,7 @@
 {% load pipeline %}
 {% load menu %}
 {% load slider %}
+{% load footer %}
 
 <!DOCTYPE html>
 <html>
@@ -24,8 +25,10 @@
 
     <body>
         <div class="container">
-            {% menu %}
-            {% slider %}
+            <header>
+                {% menu %}
+                {% slider %}
+            </header>
 
             <div class="row">
                 <div class="large-3 columns" data-sticky-container>
@@ -40,30 +43,7 @@
             </div>
 
             <footer>
-                <div class="row">
-                    <div class="large-4 columns">
-                        Contact us:
-                        <a href="{% url 'contact_form' %}">
-                            <i class="fi-mail size-60"></i>
-                        </a>
-                    </div>
-
-                    <div class="large-4 columns">
-                        By
-                        <a href="https://github.com/h4k1m0u" target="_blank">
-                            h4k1m0u
-                        </a>
-
-                        &copy; {% now "Y" %} 
-                    </div>
-
-                    <div class="large-4 columns">
-                        Follow us:
-                        <a href="https://twitter.com/bookquotes_me" target="_blank">
-                            <i class="fi-social-twitter size-60"></i>
-                        </a> 
-                    </div>
-                </div>
+                {% footer %}
             </footer>
         </div>
 

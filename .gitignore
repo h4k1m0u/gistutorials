@@ -1,13 +1,6 @@
 *.sw*
 bower_components
-
-# bower components in static folder
-static/foundation-sites
-static/jquery
-static/motion-ui
-static/what-input
-static/rest_framework
-static/.sass-cache
+static/*
 
 # python
 __pycache__

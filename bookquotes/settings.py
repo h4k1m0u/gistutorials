@@ -85,6 +85,7 @@ TEMPLATES = [
             'libraries': {
                 'menu': 'templatetags.menu',
                 'slider': 'templatetags.slider',
+                'footer': 'templatetags.footer',
             }
         },
     },
