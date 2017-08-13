@@ -20,7 +20,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     # fields to show in admin listview
-    list_display = ('name',)
+    list_display = ('name', 'image')
 
 
 class TagAdmin(admin.ModelAdmin):

@@ -76,6 +76,7 @@ class Book(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(blank=True, editable=False)
+    image = models.ImageField(upload_to='images', blank=True)
 
     def __str__(self):
         """
