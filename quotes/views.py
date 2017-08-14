@@ -8,6 +8,7 @@ from urllib import parse
 from dal import autocomplete
 from rest_framework import viewsets
 from .serializers import QuoteSerializer
+from django.db.models import Count
 
 
 class QuotesListView(ListView):
@@ -229,3 +230,11 @@ class QuoteViewSet(viewsets.ModelViewSet):
     """
     queryset = Quote.published_objects.all().order_by('-date')
     serializer_class = QuoteSerializer
+
+
+def home_page(request):
+    # top 5 categories by # of quotes
+    categories = Category.objects.annotate(num_quotes=Count('quote'))\
+        .order_by('-num_quotes')[:5].all()
+
+    return render(request, 'quotes/home-page.html', {'categories': categories})

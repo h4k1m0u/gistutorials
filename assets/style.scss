@@ -124,7 +124,7 @@ $titlebar-icon-color-hover: $bookquotes-cyan-light;
 .top-bar {
     border-bottom: 2px solid $bookquotes-red;
 
-    .top-bar-title strong {
+    .top-bar-title strong a {
         color: $bookquotes-red;
     }
 }
