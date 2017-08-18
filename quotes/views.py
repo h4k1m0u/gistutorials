@@ -233,8 +233,8 @@ class QuoteViewSet(viewsets.ModelViewSet):
 
 
 def home_page(request):
-    # top 5 categories by # of quotes
+    # top 6 categories by # of quotes
     categories = Category.objects.annotate(num_quotes=Count('quote'))\
-        .order_by('-num_quotes')[:5].all()
+        .order_by('-num_quotes')[:6].all()
 
     return render(request, 'quotes/home-page.html', {'categories': categories})

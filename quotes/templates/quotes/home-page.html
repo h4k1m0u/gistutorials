@@ -7,12 +7,12 @@
         <ul>
             {% for category in categories %}
                 <li>
-                    <h2 class="title">
-                        <a href="{% url 'quotes:quotes-list' category=category.slug %}">
+                    <a href="{% url 'quotes:quotes-list' category=category.slug %}">
+                        <figure>
                             <img src="{{ category.image.url }}" alt="{{ category.name }}" />
-                        </a>
-                    </h2>
-                    <span>{{ category.name }}</span>
+                            <figcaption>{{ category.name }}</figcaption>
+                        </figure>
+                    </a>
                 </li>
             {% endfor %}
         </ul>
