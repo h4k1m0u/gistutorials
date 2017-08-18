@@ -4,18 +4,18 @@
 
 {% block content %}
     {% if categories %}
-        <ul>
+        <div class="grid-x grid-margin-y">
             {% for category in categories %}
-                <li>
+                <div class="large-6 cell">
                     <a href="{% url 'quotes:quotes-list' category=category.slug %}">
                         <figure>
                             <img src="{{ category.image.url }}" alt="{{ category.name }}" />
                             <figcaption>{{ category.name }}</figcaption>
                         </figure>
                     </a>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
         <p>No categories.</p>
     {% endif %}

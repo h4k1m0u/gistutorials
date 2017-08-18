@@ -24,28 +24,26 @@
     </head>
 
     <body>
-        <div class="container">
-            <header>
-                {% menu %}
-                {% slider %}
-            </header>
+        <header>
+            {% menu %}
+            {% slider %}
+        </header>
 
-            <div class="row">
-                <div class="large-3 columns" data-sticky-container>
-                    {% block sidebar %}
-                    {% endblock %}
-                </div>
+        <div class="grid-x grid-padding-x">
+            <nav class="large-3 cell" data-sticky-container>
+                {% block sidebar %}
+                {% endblock %}
+            </nav>
 
-                <div class="large-9 columns">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </div>
-
-            <footer>
-                {% footer %}
-            </footer>
+            <main class="large-9 cell">
+                {% block content %}
+                {% endblock %}
+            </main>
         </div>
+
+        <footer>
+            {% footer %}
+        </footer>
 
         <script type="text/javascript">
             $(document).foundation();

@@ -34,19 +34,6 @@ $bookquotes-cyan-light: #CCDDCC;
 $bookquotes-red: #FF2255;
 
 
-// Containers (stick footer to bottom)
-
-html, body {
-    height: 100%;
-}
-
-.container {
-    position: relative;
-    min-height: 100%;
-    padding-bottom: 2rem;
-}
-
-
 // Emphasis
 
 strong {
@@ -217,7 +204,7 @@ $list-item-radius: rem-calc(10);
 .book {
     text-align: center;
 }
-.quote, .article, .sharethis-inline-share-buttons, .quote-footer, .article-footer {
+.sharethis-inline-share-buttons, .quote-footer, .article-footer {
     margin-bottom: rem-calc(20);
 }
 .similar-quote {
@@ -250,7 +237,6 @@ $pagination-item-background-hover: transparent;
 $pagination-item-background-current: transparent;
 
 .pagination {
-    margin-bottom: 6rem !important;
     a {
         &:hover {
             color: $bookquotes-red;
@@ -262,17 +248,12 @@ $pagination-item-background-current: transparent;
 // Footer
 
 footer {
-    height: 7rem;
+    margin-top: 1rem;
     padding-top: 1rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     font-size: rem-calc(14);
     color: $bookquotes-gray-light;
     background-color: $bookquotes-gray-dark;
     border-top: 2px solid $bookquotes-red;
-    text-align: center;
     .menu {
         > li > a {
             padding: unset !important;

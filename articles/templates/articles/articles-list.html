@@ -6,9 +6,9 @@
     <h1>Articles</h1>
 
     {% if articles %}
-        <div class="row large-up-4">
+        <div class="grid-x grid-margin-y">
             {% for article in articles %}
-                <div class="column column-block">
+                <div class="large-12 cell">
                     <div class="article">
                         <time>
                             {{ article.date | date:"M d, Y" }}

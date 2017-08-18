@@ -24,8 +24,8 @@
 
     <div class="sharethis-inline-share-buttons"></div>
 
-    <div class="quote-footer row">
-        <div class="large-3 medium-6 small-6 columns">
+    <div class="grid-x quote-footer">
+        <div class="large-3 medium-6 small-6 cell">
             {% if quote.book %}
                 <h2 class="title">From</h2>
 
@@ -34,7 +34,7 @@
             {% endif %}
         </div>
 
-        <div class="large-3 medium-6 small-6 columns">
+        <div class="large-3 medium-6 small-6 cell">
             {% if quote.tags.count %}
                 <div class="tags">
                     <h2 class="title">Tags</h2>
@@ -45,7 +45,7 @@
             {% endif %}
         </div>
 
-        <div class="large-6 medium-12 small-12 columns">
+        <div class="large-6 medium-12 small-12 cell">
             {% similar_quotes %}
         </div>
     </div>

@@ -198,7 +198,7 @@ BOWER_COMPONENTS_ROOT = BASE_DIR
 # Apps to install with bower
 
 BOWER_INSTALLED_APPS = (
-    'foundation-sites#6.3',
+    'foundation-sites',
     'motion-ui',
     'foundation-icon-fonts'
 )

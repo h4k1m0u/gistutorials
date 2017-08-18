@@ -16,9 +16,9 @@
     {% endif %} 
 
     {% if quotes %}
-        <div class="row large-up-4">
+        <div class="grid-x grid-margin-x grid-margin-y">
             {% for quote in quotes %}
-                <div class="column column-block">
+                <div class="large-3 cell">
                     <div class="quote">
                         <time>
                             {{ quote.date | date:"M d, Y" }}
