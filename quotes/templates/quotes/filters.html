@@ -1,11 +1,11 @@
 <div class="sticky" data-sticky data-top-anchor="slider:bottom" style="width: 100%">
     <ul class="accordion" data-accordion data-allow-all-closed="true">
-        <li class="accordion-item {% if browsed_category %} is-active {% endif %}" data-accordion-item>
+        <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Categories</a>
             <div class="accordion-content" data-tab-content>
                 <ul>
                     {% for category in categories %}
-                        <li {% if category.slug == browsed_category %} class="active" {% endif %}>
+                        <li>
                             <a href="{% url 'quotes:quotes-list' category=category.slug %}">{{ category.name }} ({{ category.num_quotes }})</a>
                         </li>
                     {% endfor %}
@@ -15,12 +15,12 @@
                 </ul>
             </div>
         </li>
-        <li class="accordion-item {% if browsed_book %} is-active {% endif %}" data-accordion-item>
+        <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Books</a>
             <div class="accordion-content" data-tab-content>
                 <ul>
                     {% for book in books %}
-                        <li {% if book.slug == browsed_book %} class="active" {% endif %}>
+                        <li>
                             <a href="{% url 'quotes:quotes-list' book=book.slug %}">{{ book.title }} ({{ book.num_quotes }})</a>
                         </li>
                     {% endfor %}
@@ -30,12 +30,12 @@
                 </ul>
             </div>
         </li>
-        <li class="accordion-item {% if browsed_author %} is-active {% endif %}" data-accordion-item>
+        <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Authors</a>
             <div class="accordion-content" data-tab-content>
                 <ul>
                     {% for author in authors %}
-                        <li {% if author.slug == browsed_author %} class="active" {% endif %}>
+                        <li>
                             <a href="{% url 'quotes:quotes-list' author=author.slug %}">{{ author.name }} ({{ author.num_quotes }})</a>
                         </li>
                     {% endfor %}
