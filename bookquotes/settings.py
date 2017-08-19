@@ -25,7 +25,7 @@ SECRET_KEY = 'm3gq=zljfp91j#ecz!dh@7lu=8=dx&j7-2+!n$_i4z))jrb8gq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
+ALLOWED_HOSTS = ['localhost', 'bookquotes.me', 'www.bookquotes.me']
 
 
 # Application definition
