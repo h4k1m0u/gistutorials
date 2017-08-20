@@ -1,19 +1,11 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from . import views
 from django.contrib.auth.decorators import login_required
-from rest_framework import routers
 
 
 app_name = 'quotes'
 
-# REST API router
-router = routers.DefaultRouter()
-router.register(r'quotes', views.QuoteViewSet)
-
 urlpatterns = [
-    # REST API routes
-    url(r'^api/', include(router.urls)),
-
     # quotes list view
     url(r'^$', views.QuotesListView.as_view(), name='quotes-list'),
     url(r'^category/(?P<category>[-\w]+)/$', views.QuotesListView.as_view(),

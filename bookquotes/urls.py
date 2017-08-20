@@ -16,10 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
-from quotes.views import home_page
+from quotes.views import home_page, QuoteViewSet
+from rest_framework import routers
 
+
+# REST API router
+router = routers.DefaultRouter()
+router.register(r'quotes', QuoteViewSet)
 
 urlpatterns = [
+    # REST API routes
+    url(r'^api/', include(router.urls)),
+
     # django built-in administration
     url(r'^admin/', admin.site.urls),
 
