@@ -302,10 +302,9 @@ MANAGERS = [
 ###############################################################################
 
 
-# pagination
-
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 10
+    # pagination
+    'PAGE_SIZE': 10,
 }
 
 

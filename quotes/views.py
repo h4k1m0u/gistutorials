@@ -1,14 +1,17 @@
 from django.views.generic import ListView, DetailView
 from .models import Quote, Category, Book, Author, Tag
+from django.contrib.auth import authenticate
 from .forms import SubmitQuoteForm
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from urllib import parse
 from dal import autocomplete
-from rest_framework import viewsets
 from .serializers import QuoteSerializer
 from django.db.models import Count
+from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 
 class QuotesListView(ListView):
@@ -224,17 +227,33 @@ class TagsAutocomplete(autocomplete.Select2QuerySetView):
         return queryset
 
 
-class QuoteViewSet(viewsets.ModelViewSet):
-    """
-    REST API Quotes view.
-    """
-    queryset = Quote.published_objects.all().order_by('-date')
-    serializer_class = QuoteSerializer
-
-
 def home_page(request):
     # top 6 categories by # of quotes
     categories = Category.objects.annotate(num_quotes=Count('quote'))\
         .order_by('-num_quotes')[:6].all()
 
     return render(request, 'quotes/home-page.html', {'categories': categories})
+
+
+class QuoteViewSet(viewsets.ModelViewSet):
+    """
+    REST API view to list Quotes.
+    """
+    queryset = Quote.published_objects.all().order_by('-date')
+    serializer_class = QuoteSerializer
+
+
+@api_view(['post'])
+def api_login(request):
+    """
+    Authenticate the given user from the mobile app.
+    http://polyglot.ninja/django-rest-framework-authentication-permissions/
+    """
+    username = request.data.get('username', '')
+    password = request.data.get('password', '')
+    user = authenticate(username=username, password=password)
+
+    if user:
+        return Response(True)
+    else:
+        return Response(False)

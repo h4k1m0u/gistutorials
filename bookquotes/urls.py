@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
-from quotes.views import home_page, QuoteViewSet
+from quotes.views import home_page, QuoteViewSet, api_login
 from rest_framework import routers
 
 
@@ -27,6 +27,7 @@ router.register(r'quotes', QuoteViewSet)
 urlpatterns = [
     # REST API routes
     url(r'^api/', include(router.urls)),
+    url(r'^api/login', api_login),
 
     # django built-in administration
     url(r'^admin/', admin.site.urls),
