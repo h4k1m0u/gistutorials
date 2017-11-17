@@ -31,13 +31,17 @@ ALLOWED_HOSTS = ['localhost', 'bookquotes.me', 'www.bookquotes.me']
 # Application definition
 
 INSTALLED_APPS = [
-    'social_django',
+    'corsheaders',
+    'djoser',
+    'rest_framework.authtoken',
     'rest_framework',
+    'social_django',
     'dal',
     'dal_select2',
     'debug_toolbar',
     'pipeline',
     'djangobower',
+    'expenses.apps.ExpensesConfig',
     'quotes.apps.QuotesConfig',
     'articles.apps.ArticlesConfig',
     'members.apps.MembersConfig',
@@ -51,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -305,7 +310,28 @@ MANAGERS = [
 REST_FRAMEWORK = {
     # pagination
     'PAGE_SIZE': 10,
+
+    # authentication required
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
+
+
+###############################################################################
+# Hakim: REST CORS
+###############################################################################
+
+
+# Whitelist accounting-web
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:4200',
+    'accounting.bookquotes.me',
+)
 
 
 ###############################################################################

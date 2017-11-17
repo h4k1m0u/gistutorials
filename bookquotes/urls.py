@@ -16,18 +16,21 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
-from quotes.views import home_page, QuoteViewSet, api_login
+from quotes.views import home_page, QuoteViewSet
+from expenses.views import ExpenseViewSet, calculate_total
 from rest_framework import routers
 
 
 # REST API router
 router = routers.DefaultRouter()
 router.register(r'quotes', QuoteViewSet)
+router.register(r'expenses', ExpenseViewSet)
 
 urlpatterns = [
     # REST API routes
     url(r'^api/', include(router.urls)),
-    url(r'^api/login', api_login),
+    url(r'^api/auth/', include('djoser.urls.authtoken')),
+    url(r'api/total/$', calculate_total),
 
     # django built-in administration
     url(r'^admin/', admin.site.urls),
@@ -39,6 +42,7 @@ urlpatterns = [
     url(r'^quotes/', include('quotes.urls')),
     url(r'^articles/', include('articles.urls')),
     url(r'^members/', include('members.urls')),
+    url(r'^expenses/', include('expenses.urls')),
 
     # contact
     url(r'^contact/', include('contact_form.urls')),

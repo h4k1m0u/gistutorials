@@ -1,0 +1,67 @@
+{% extends "admin/change_list.html" %}
+{% load admin_list %}
+
+{% block content_title %}
+    <h1>{{ title }}</h1>
+{% endblock %}
+
+{% block result_list %}
+    {% regroup expenses by date as expenses_groups %}
+
+    <div class="results">
+        {% admin_actions %}
+
+        {% for expenses_group in expenses_groups %}
+            <table id="result_list">
+                <thead>
+                    <th>
+                        <div class="text">
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text">
+                            <a href="#">Date</a>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text">
+                            <a href="#">Description</a>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text">
+                            <a href="#">Amount</a>
+                        </div>
+                    </th>
+                </thead>
+
+                <tbody>
+                    {% for expense in expenses_group.list %}
+                        <tr class="{% cycle 'row1' 'row2' %}">
+                            <td>{{ expense.checkbox }}</td>
+                            <td>{{ expense.date }}</td>
+                            <td>
+                                <a href="{% url 'admin:expenses_expense_change' expense.id %}">{{ expense.description }}</a>
+                            </td>
+                            <td>{{ expense.amount }}£</td>
+                        </tr>
+                    {% endfor %}
+                    
+                    <tr>
+                        <td></td>
+                        <td><strong>Total/day</strong></td>
+                        <td><strong> {{ per_day | get_item:expenses_group.grouper }}£</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+
+        <p style="border-top: 2px solid #ddd;">
+            <strong>Total: {{ total }}£</strong>
+        </p>
+    </div>
+{% endblock %}
+
+{% block pagination %}
+
+{% endblock %}
