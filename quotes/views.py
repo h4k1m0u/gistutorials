@@ -242,18 +242,20 @@ class QuoteViewSet(viewsets.ModelViewSet):
     queryset = Quote.published_objects.all().order_by('-date')
     serializer_class = QuoteSerializer
 
+    def create(self, request):
+        """
+        Create the quote's author before creating the quote
+        """
+        # get request params
+        text = request.data.get('text')
+        firstname = request.data.get('firstname')
+        lastname = request.data.get('lastname')
 
-@api_view(['post'])
-def api_login(request):
-    """
-    Authenticate the given user from the mobile app.
-    http://polyglot.ninja/django-rest-framework-authentication-permissions/
-    """
-    username = request.data.get('username', '')
-    password = request.data.get('password', '')
-    user = authenticate(username=username, password=password)
+        # create a new author
+        author = Author.objects.create(firstname=firstname, lastname=lastname)
 
-    if user:
-        return Response(True)
-    else:
-        return Response(False)
+        # create the quote
+        Quote.objects.create(text=text, author=author)
+
+        return Response({'text': text, 'firstname': firstname,
+                         'lastname': lastname})
