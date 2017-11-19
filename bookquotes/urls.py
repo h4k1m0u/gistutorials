@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from quotes.views import home_page, QuoteViewSet
-from expenses.views import ExpenseViewSet, calculate_total
+from expenses.views import ExpenseViewSet
 from rest_framework import routers
 
 
@@ -30,7 +30,6 @@ urlpatterns = [
     # REST API routes
     url(r'^api/', include(router.urls)),
     url(r'^api/auth/', include('djoser.urls.authtoken')),
-    url(r'api/total/$', calculate_total),
 
     # django built-in administration
     url(r'^admin/', admin.site.urls),

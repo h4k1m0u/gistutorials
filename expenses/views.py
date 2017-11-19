@@ -3,7 +3,7 @@ from django.db.models import Sum
 from rest_framework import viewsets
 from .serializers import ExpenseSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import list_route
 
 
 class ExpenseViewSet(viewsets.ModelViewSet):
@@ -15,7 +15,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
-        Show only expenses owned by user in given month.
+        Show only expenses owned by user in given month on the list.
         """
         qs = super(viewsets.ModelViewSet, self).get_queryset()
 
@@ -26,22 +26,21 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
         return qs.filter(user=self.request.user)
 
+    @list_route()
+    def total(self, request):
+        """
+        Calculate the total of expenses owned by user for the given  month.
+        """
+        # filter by current user
+        qs = Expense.objects.filter(user=request.user)
 
-@api_view(['get'])
-def calculate_total(request):
-    """
-    Calculate the total of expenses owned by user for the given  month.
-    """
-    # filter by current user
-    qs = Expense.objects.filter(user=request.user)
+        # filter by month
+        month = request.GET.get('month', '')
+        if month:
+            qs = qs.filter(date__month=month)
 
-    # filter by month
-    month = request.GET.get('month', '')
-    if month:
-        qs = qs.filter(date__month=month)
+        # sum of expenses
+        total = qs.aggregate(Sum('amount'))
+        total_amount = total['amount__sum'] if total['amount__sum'] else 0.0
 
-    # sum of expenses
-    total = qs.aggregate(Sum('amount'))
-    total_amount = total['amount__sum'] if total['amount__sum'] else 0.0
-
-    return Response(total_amount)
+        return Response(total_amount)
