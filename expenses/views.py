@@ -1,9 +1,11 @@
 from .models import Expense
 from django.db.models import Sum
+from django.db.models.functions import Extract
 from rest_framework import viewsets
 from .serializers import ExpenseSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
+from .constants import months
 
 
 class ExpenseViewSet(viewsets.ModelViewSet):
@@ -44,3 +46,29 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         total_amount = total['amount__sum'] if total['amount__sum'] else 0.0
 
         return Response(total_amount)
+
+    @list_route()
+    def total_monthly(self, request):
+        """
+        Calculate the totals of expenses for each month owned by user.
+        """
+        # filter by current user
+        qs = Expense.objects.filter(user=request.user)
+
+        # total for each month
+        per_month = (
+            qs.
+            annotate(month=Extract('date', 'month')).
+            values('month').
+            annotate(per_month=Sum('amount')).
+            order_by('-month')
+        )
+
+        # format monthly totals
+        total = {}
+        for row in per_month:
+            month_ind = '{:02d}'.format(row['month'])
+            month_name = months[month_ind].lower()
+            total[month_name] = row['per_month']
+
+        return Response(total)
