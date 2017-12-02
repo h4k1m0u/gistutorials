@@ -1,17 +1,10 @@
 from django.views.generic import ListView, DetailView
 from .models import Quote, Category, Book, Author, Tag
-from django.contrib.auth import authenticate
-from .forms import SubmitQuoteForm
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from urllib import parse
-from dal import autocomplete
 from .serializers import QuoteSerializer
 from django.db.models import Count
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 
 
 class QuotesListView(ListView):
@@ -131,100 +124,6 @@ class AuthorsListView(ListView):
     template_name = 'quotes/authors-list.html'
     model = Author
     context_object_name = 'authors'
-
-
-def quote_submit(request):
-    """
-        Submit a quote view.
-    """
-    if request.method == 'POST':
-        # a quote was submited
-        form = SubmitQuoteForm(request.POST)
-
-        if form.is_valid():
-            # save quote & who submitted it to database
-            quote = form.save(commit=False)
-            quote.member = request.user.member
-            quote.save()
-
-            # required for m2m when commit=False
-            form.save_m2m()
-
-            return HttpResponseRedirect(reverse('quotes:quote-submitted'))
-    else:
-        # render the form
-        form = SubmitQuoteForm()
-
-    return render(request, 'quotes/quote-submit.html', {'form': form})
-
-
-def quote_submitted(request):
-    """
-        A quote was submitted view.
-    """
-    referer_path = parse.urlparse(request.META.get('HTTP_REFERER')).path
-
-    # check if coming from submit page
-    if referer_path == reverse('quotes:quote-submit'):
-        return render(request, 'quotes/quote-submitted.html')
-    else:
-        return HttpResponseRedirect(reverse('quotes:quotes-list'))
-
-
-class BookAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        """
-            Books to show in the autocomplete field.
-        """
-        queryset = Book.objects.all()
-
-        # filter by user's input
-        if self.q:
-            queryset = queryset.filter(title__istartswith=self.q)
-
-        return queryset
-
-
-class AuthorAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        """
-            Authors to show in the autocomplete field.
-        """
-        queryset = Author.objects.all()
-
-        # filter by user's input
-        if self.q:
-            queryset = queryset.filter(lastname__istartswith=self.q)
-
-        return queryset
-
-
-class CategoryAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        """
-            Categories to show in the autocomplete field.
-        """
-        queryset = Category.objects.all()
-
-        # filter by user's input
-        if self.q:
-            queryset = queryset.filter(name__istartswith=self.q)
-
-        return queryset
-
-
-class TagsAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        """
-            Tags to show in the autocomplete field.
-        """
-        queryset = Tag.objects.all()
-
-        # filter by user's input
-        if self.q:
-            queryset = queryset.filter(name__istartswith=self.q)
-
-        return queryset
 
 
 def home_page(request):

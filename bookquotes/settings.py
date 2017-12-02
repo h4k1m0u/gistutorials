@@ -36,8 +36,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'social_django',
-    'dal',
-    'dal_select2',
     'debug_toolbar',
     'pipeline',
     'djangobower',
@@ -310,6 +308,7 @@ MANAGERS = [
 REST_FRAMEWORK = {
     # pagination
     'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 
     # authentication required
     'DEFAULT_AUTHENTICATION_CLASSES': (

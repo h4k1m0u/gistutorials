@@ -3,6 +3,7 @@
 {% load menu %}
 {% load slider %}
 {% load footer %}
+{% load filters %}
 
 <!DOCTYPE html>
 <html>
@@ -32,8 +33,7 @@
 
         <div class="grid-x grid-padding-x">
             <nav class="large-3 cell" data-sticky-container>
-                {% block sidebar %}
-                {% endblock %}
+                {% filters %}
             </nav>
 
             <main class="large-9 cell">

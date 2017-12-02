@@ -1,6 +1,5 @@
 from django.conf.urls import url
 from . import views
-from django.contrib.auth.decorators import login_required
 
 
 app_name = 'quotes'
@@ -32,31 +31,4 @@ urlpatterns = [
 
     # authors list view
     url(r'^authors$', views.AuthorsListView.as_view(), name='authors-list'),
-
-    # submit a quote (only for authenticated users)
-    url(r'^submit$', login_required(views.quote_submit), name='quote-submit'),
-    url(r'^submitted$', login_required(views.quote_submitted),
-        name='quote-submitted'),
-
-    # autocomplete fields
-    url(r'^book-autocomplete/$',
-        login_required(views.BookAutocomplete.as_view(
-            create_field='title'
-        )),
-        name='book-autocomplete'),
-    url(r'^author-autocomplete/$',
-        login_required(views.AuthorAutocomplete.as_view(
-            create_field='lastname'
-        )),
-        name='author-autocomplete'),
-    url(r'^category-autocomplete/$',
-        login_required(views.CategoryAutocomplete.as_view(
-            create_field='name'
-        )),
-        name='category-autocomplete'),
-    url(r'^tags-autocomplete/$',
-        login_required(views.TagsAutocomplete.as_view(
-            create_field='name'
-        )),
-        name='tags-autocomplete'),
 ]

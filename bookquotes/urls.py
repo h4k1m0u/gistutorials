@@ -43,9 +43,6 @@ urlpatterns = [
     url(r'^members/', include('members.urls')),
     url(r'^expenses/', include('expenses.urls')),
 
-    # contact
-    url(r'^contact/', include('contact_form.urls')),
-
     # social media authentication (oauth)
     url(r'^oauth/', include('social_django.urls')),
 ]
