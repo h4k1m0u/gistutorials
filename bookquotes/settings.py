@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'pipeline',
     'djangobower',
+    'places.apps.PlacesConfig',
     'expenses.apps.ExpensesConfig',
     'quotes.apps.QuotesConfig',
     'articles.apps.ArticlesConfig',
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -102,7 +104,7 @@ WSGI_APPLICATION = 'bookquotes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'bookquotes',
         'USER': 'hakim',
         'PASSWORD': '78G62h9',
