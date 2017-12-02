@@ -1,5 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
+
+
+class ExpenseManager(models.Manager):
+    def get_queryset(self):
+        """
+        Return only expenses in current year.
+        """
+        year = datetime.datetime.now().year
+        return super().get_queryset().filter(date__year=year)
 
 
 class Expense(models.Model):
@@ -10,3 +20,6 @@ class Expense(models.Model):
     # foreign keys
     user = models.ForeignKey(User, null=True, editable=False,
                              on_delete=models.CASCADE)
+
+    # filter by current year
+    objects = ExpenseManager()
