@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', 'gistutorials.com', 'www.gistutorials.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'tinymce',
     'leaflet',
     'corsheaders',
     'djoser',
@@ -379,3 +380,17 @@ SOCIAL_AUTH_PIPELINE = (
 
 SOCIAL_AUTH_LOGIN_URL = '/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
+
+
+###############################################################################
+# Hakim: TinyMCE text editor
+###############################################################################
+
+
+# Customize the editor
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'width': '100%',
+    'height': 300
+}

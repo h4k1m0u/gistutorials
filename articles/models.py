@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from members.models import Member
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -70,11 +71,11 @@ class ArticleManager(models.Manager):
 
 
 class Article(models.Model):
-    text = models.TextField()
     title = models.CharField(max_length=140, unique=True)
     slug = models.SlugField(blank=True, editable=False)
     date = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=False)
+    text = HTMLField()
 
     # foreign keys
     # can be empty: null in database & blank in forms
