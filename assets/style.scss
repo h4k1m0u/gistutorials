@@ -195,7 +195,7 @@ $breadcrumbs-item-color: $template-gray-dark;
 // Quotes, Books, Articles lists
 
 $list-item-radius: rem-calc(10);
-.quote, .book, .similar-quotes, .article {
+.quote, .book, .similar-quotes, .article, .city {
     padding: $global-padding;
     background-color: $template-gray-light;
     border-radius: $list-item-radius;

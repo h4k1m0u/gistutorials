@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', 'gistutorials.com', 'www.gistutorials.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'leaflet',
     'corsheaders',
     'djoser',
     'rest_framework.authtoken',

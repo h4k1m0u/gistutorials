@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^articles/', include('articles.urls')),
     url(r'^members/', include('members.urls')),
     url(r'^expenses/', include('expenses.urls')),
+    url(r'^places/', include('places.urls')),
 
     # social media authentication (oauth)
     url(r'^oauth/', include('social_django.urls')),

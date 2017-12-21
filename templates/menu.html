@@ -4,7 +4,7 @@
             <button class="menu-icon" type="button" data-toggle></button>
         </span>
         <strong>
-            <a href="{% url 'home-page' %}">Book Quotes</a>
+            <a href="{% url 'home-page' %}">GIS Tutorials</a>
         </strong>
     </div>
 
@@ -28,6 +28,10 @@
 
                 <li {% if app_name == 'articles' %} class="active" {% endif %}>
                     <a href="{% url 'articles:articles-list' %}">Articles</a>
+                </li>
+
+                <li {% if app_name == 'places' %} class="active" {% endif %}>
+                    <a href="{% url 'places:cities-list' %}">Cities</a>
                 </li>
             </ul>
         </div>
