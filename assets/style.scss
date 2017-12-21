@@ -27,24 +27,24 @@ $body-font-family: 'Roboto';
 
 // Colors
 
-$bookquotes-gray-dark: #444444;
-$bookquotes-gray-light: #EEEEDD;
-$bookquotes-cyan-dark: #559999;
-$bookquotes-cyan-light: #CCDDCC;
-$bookquotes-red: #FF2255;
+$template-gray-dark: #444444;
+$template-gray-light: #EEEEDD;
+$template-cyan-dark: #559999;
+$template-cyan-light: #CCDDCC;
+$template-red: #FF2255;
 
 
 // Emphasis
 
 strong {
     font-weight: $global-weight-normal !important;
-    color: $bookquotes-cyan-dark;
+    color: $template-cyan-dark;
 }
 
 
 // Small
 
-$header-small-font-color: $bookquotes-red;
+$header-small-font-color: $template-red;
 small {
     color: $header-small-font-color;
 }
@@ -54,13 +54,13 @@ small {
 
 time {
     font-size: rem-calc(12);
-    color: $bookquotes-cyan-dark;
+    color: $template-cyan-dark;
 }
 
 
 // Headings
 
-$header-color: $bookquotes-gray-dark;
+$header-color: $template-gray-dark;
 h2.title {
     font-size: rem-calc(map-deep-get($header-styles, small, h2, font-size));
 }
@@ -68,22 +68,22 @@ h2.title {
 
 // Blockquotes
 
-$blockquote-color: $bookquotes-gray-dark;
-$blockquote-border: 1px solid $bookquotes-cyan-light;
+$blockquote-color: $template-gray-dark;
+$blockquote-border: 1px solid $template-cyan-light;
 
 
 // Links
 
-$anchor-color: $bookquotes-gray-dark;
-$anchor-color-hover: $bookquotes-cyan-dark;
+$anchor-color: $template-gray-dark;
+$anchor-color-hover: $template-cyan-dark;
 
 
 // Citations
 
 cite a {
-    color: $bookquotes-cyan-dark;
+    color: $template-cyan-dark;
     &:hover {
-        color: $bookquotes-red;
+        color: $template-red;
     }
 }
 
@@ -96,44 +96,44 @@ $list-side-margin: 0rem;
 
 // Buttons
 
-$button-background: $bookquotes-cyan-dark;
-$button-background-hover: $bookquotes-red;
+$button-background: $template-cyan-dark;
+$button-background-hover: $template-red;
 
 
 // Topbar
 
-$topbar-background: $bookquotes-gray-dark;
-$topbar-submenu-background: $bookquotes-gray-light;
-$menu-item-color-active: $bookquotes-cyan-dark;
+$topbar-background: $template-gray-dark;
+$topbar-submenu-background: $template-gray-light;
+$menu-item-color-active: $template-cyan-dark;
 $menu-item-background-active: transparent;
-$titlebar-icon-color: $bookquotes-red;
-$titlebar-icon-color-hover: $bookquotes-cyan-light;
+$titlebar-icon-color: $template-red;
+$titlebar-icon-color-hover: $template-cyan-light;
 .top-bar {
-    border-bottom: 2px solid $bookquotes-red;
+    border-bottom: 2px solid $template-red;
 
     .top-bar-title strong a {
-        color: $bookquotes-red;
+        color: $template-red;
     }
 }
 
 
 // Slider
 
-$orbit-bullet-background: $bookquotes-cyan-dark;
-$orbit-bullet-background-active: $bookquotes-red;
+$orbit-bullet-background: $template-cyan-dark;
+$orbit-bullet-background-active: $template-red;
 $orbit-control-background-hover: transparent;
 .orbit {
-    background-color: $bookquotes-gray-light;
+    background-color: $template-gray-light;
     margin-bottom: rem-calc(20);
-    border-bottom: 1px solid $bookquotes-cyan-light;
-    box-shadow: inset 0 0 1px 1px $bookquotes-cyan-light;
+    border-bottom: 1px solid $template-cyan-light;
+    box-shadow: inset 0 0 1px 1px $template-cyan-light;
 
     .orbit-previous, .orbit-next {
-        color: $bookquotes-cyan-dark !important;
+        color: $template-cyan-dark !important;
         &:hover,
         &:active,
         &:focus {
-            color: $bookquotes-red !important;
+            color: $template-red !important;
         }
     }
 }
@@ -142,18 +142,18 @@ $orbit-control-background-hover: transparent;
 // Dropdown menu
 
 $dropdownmenu-arrows: false;
-$dropdownmenu-border: 1px solid $bookquotes-cyan-light;
+$dropdownmenu-border: 1px solid $template-cyan-light;
 .menu > li {
     > a {
-        color: $bookquotes-gray-light;
+        color: $template-gray-light;
         &:hover {
-            color: $bookquotes-cyan-dark;
+            color: $template-cyan-dark;
         }
     }
     > ul.submenu > li > a {
-        color: $bookquotes-gray-dark;
+        color: $template-gray-dark;
         &:hover {
-            color: $bookquotes-cyan-dark;
+            color: $template-cyan-dark;
         }
     }
 }
@@ -163,17 +163,17 @@ $dropdownmenu-border: 1px solid $bookquotes-cyan-light;
 
 $accordion-plusminus: false;
 $accordion-title-font-size: rem-calc(14);
-$accordion-background: $bookquotes-gray-light;
-$accordion-item-color: $bookquotes-gray-dark;
+$accordion-background: $template-gray-light;
+$accordion-item-color: $template-gray-dark;
 $accordion-item-background-hover: transparent;
-$accordion-content-border: 1px solid $bookquotes-cyan-light;
+$accordion-content-border: 1px solid $template-cyan-light;
 
 .accordion-content ul {
     list-style-type: none;
     li {
         margin-bottom: rem-calc(20);
         &.active a {
-            color: $bookquotes-cyan-dark;
+            color: $template-cyan-dark;
         }
     }
 }
@@ -183,11 +183,11 @@ $accordion-content-border: 1px solid $bookquotes-cyan-light;
 
 $breadcrumbs-item-uppercase: false;
 $breadcrumbs-item-font-size: rem-calc(12);
-$breadcrumbs-item-color: $bookquotes-gray-dark;
+$breadcrumbs-item-color: $template-gray-dark;
 .breadcrumbs li a {
     &:hover {
         text-decoration: none;
-        color: $bookquotes-cyan-dark;
+        color: $template-cyan-dark;
     }
 }
 
@@ -197,9 +197,9 @@ $breadcrumbs-item-color: $bookquotes-gray-dark;
 $list-item-radius: rem-calc(10);
 .quote, .book, .similar-quotes, .article {
     padding: $global-padding;
-    background-color: $bookquotes-gray-light;
+    background-color: $template-gray-light;
     border-radius: $list-item-radius;
-    border: 1px solid $bookquotes-cyan-light;
+    border: 1px solid $template-cyan-light;
 }
 .book {
     text-align: center;
@@ -210,7 +210,7 @@ $list-item-radius: rem-calc(10);
 .similar-quote {
     padding-top: rem-calc(10);
     padding-bottom: rem-calc(10);
-    border-bottom: 1px solid $bookquotes-cyan-light;
+    border-bottom: 1px solid $template-cyan-light;
 
     &:last-child {
         border-bottom: 0;
@@ -222,24 +222,24 @@ $list-item-radius: rem-calc(10);
 
 .tags a {
     font-size: rem-calc(12);
-    color: $bookquotes-cyan-dark;
+    color: $template-cyan-dark;
     &:hover {
-        color: $bookquotes-red;
+        color: $template-red;
     }
 }
 
 
 // Pagination
 
-$pagination-item-color: $bookquotes-cyan-dark;
-$pagination-item-color-current: $bookquotes-red;
+$pagination-item-color: $template-cyan-dark;
+$pagination-item-color-current: $template-red;
 $pagination-item-background-hover: transparent;
 $pagination-item-background-current: transparent;
 
 .pagination {
     a {
         &:hover {
-            color: $bookquotes-red;
+            color: $template-red;
         }
     }
 }
@@ -251,9 +251,9 @@ footer {
     margin-top: 1rem;
     padding-top: 1rem;
     font-size: rem-calc(14);
-    color: $bookquotes-gray-light;
-    background-color: $bookquotes-gray-dark;
-    border-top: 2px solid $bookquotes-red;
+    color: $template-gray-light;
+    background-color: $template-gray-dark;
+    border-top: 2px solid $template-red;
     .menu {
         > li > a {
             padding: unset !important;
@@ -261,9 +261,9 @@ footer {
         }
     }
     a {
-        color: $bookquotes-cyan-dark;
+        color: $template-cyan-dark;
         &:hover {
-            color: $bookquotes-red;
+            color: $template-red;
         }
     }
 }
@@ -285,7 +285,7 @@ footer {
 // Forms
 
 .errorlist {
-    color: $bookquotes-red;
+    color: $template-red;
 }
 
 
@@ -376,7 +376,7 @@ figure {
             opacity: 1;
         }
         figcaption {
-            color: $bookquotes-cyan-dark;
+            color: $template-cyan-dark;
             z-index: 2;
         }
     }

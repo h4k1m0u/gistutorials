@@ -27,7 +27,7 @@ And insert the following:
 ```python
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': '<database>',
         'USER': '<database-user>',
         'PASSWORD': '',
