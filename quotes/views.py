@@ -137,6 +137,7 @@ def home_page(request):
 class QuoteViewSet(viewsets.ModelViewSet):
     """
     REST API view to list Quotes.
+    Authentication not necessary (quotes are public).
     """
     queryset = Quote.published_objects.all().order_by('-date')
     serializer_class = QuoteSerializer

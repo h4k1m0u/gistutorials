@@ -43,6 +43,7 @@ class ArticlesDetailView(DetailView):
 class ArticleViewSet(viewsets.ModelViewSet):
     """
     REST API view to list Articles.
+    Authentication not necessary (Articles are public).
     """
     queryset = Article.published_objects.all().order_by('-date')
     serializer_class = ArticleSerializer

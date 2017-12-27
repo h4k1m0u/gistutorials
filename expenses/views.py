@@ -5,12 +5,16 @@ from rest_framework import viewsets
 from .serializers import ExpenseSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated
 from .constants import months
 
 
+@permission_classes((IsAuthenticated, ))
 class ExpenseViewSet(viewsets.ModelViewSet):
     """
     REST API expenses view.
+    Authentication needed because expenses are owned by logged on member.
     """
     queryset = Expense.objects.all().order_by('-date')
     serializer_class = ExpenseSerializer
