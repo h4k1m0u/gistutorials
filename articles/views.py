@@ -1,5 +1,7 @@
 from django.views.generic import ListView, DetailView
 from .models import Article
+from rest_framework import viewsets
+from .serializers import ArticleSerializer
 
 
 class ArticlesListView(ListView):
@@ -36,3 +38,11 @@ class ArticlesDetailView(DetailView):
             Show only published articles.
         """
         return super().get_queryset().filter(published=True)
+
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    """
+    REST API view to list Articles.
+    """
+    queryset = Article.published_objects.all().order_by('-date')
+    serializer_class = ArticleSerializer

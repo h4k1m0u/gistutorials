@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from quotes.views import home_page, QuoteViewSet
 from expenses.views import ExpenseViewSet
+from articles.views import ArticleViewSet
 from rest_framework import routers
 
 
@@ -25,6 +26,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'quotes', QuoteViewSet)
 router.register(r'expenses', ExpenseViewSet)
+router.register(r'articles', ArticleViewSet)
 
 urlpatterns = [
     # REST API routes
