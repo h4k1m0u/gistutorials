@@ -1,6 +1,7 @@
 *.sw*
 bower_components
 static/*
+*.log
 
 # python
 __pycache__

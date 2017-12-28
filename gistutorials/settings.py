@@ -25,7 +25,8 @@ SECRET_KEY = 'm3gq=zljfp91j#ecz!dh@7lu=8=dx&j7-2+!n$_i4z))jrb8gq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'gistutorials.com', 'www.gistutorials.com']
+ALLOWED_HOSTS = ['localhost', 'gistutorials.loc',
+                 'gistutorials.com', 'www.gistutorials.com']
 
 
 # Application definition
@@ -312,7 +313,7 @@ MANAGERS = [
 REST_FRAMEWORK = {
     # pagination
     'PAGE_SIZE': 10,
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
 
     # authentication required
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -389,5 +390,5 @@ SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 TINYMCE_DEFAULT_CONFIG = {
     'theme': 'advanced',
     'width': '100%',
-    'height': 300
+    'height': 300,
 }
