@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
-from quotes.views import home_page, QuoteViewSet
+from quotes.views import QuoteViewSet
 from expenses.views import ExpenseViewSet
 from articles.views import ArticleViewSet
 from rest_framework import routers
@@ -35,19 +35,6 @@ urlpatterns = [
 
     # django built-in administration
     url(r'^admin/', admin.site.urls),
-
-    # home page
-    url(r'^$', home_page, name='home-page'),
-
-    # applications
-    url(r'^quotes/', include('quotes.urls')),
-    url(r'^articles/', include('articles.urls')),
-    url(r'^members/', include('members.urls')),
-    url(r'^expenses/', include('expenses.urls')),
-    url(r'^places/', include('places.urls')),
-
-    # social media authentication (oauth)
-    url(r'^oauth/', include('social_django.urls')),
 
     # tinymce
     url(r'^tinymce/', include('tinymce.urls')),

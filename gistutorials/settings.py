@@ -91,9 +91,6 @@ TEMPLATES = [
             ],
             # Look for base templatetags at root of project
             'libraries': {
-                'menu': 'templatetags.menu',
-                'slider': 'templatetags.slider',
-                'footer': 'templatetags.footer',
             }
         },
     },

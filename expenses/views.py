@@ -71,7 +71,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         # format monthly totals
         total = {}
         for row in per_month:
-            month_ind = row['month']
+            month_ind = str(row['month'])
             month_name = months[month_ind].lower()
             total[month_name] = row['per_month']
 
