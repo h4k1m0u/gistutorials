@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'debug_toolbar',
-    'pipeline',
-    'djangobower',
     'places.apps.PlacesConfig',
     'expenses.apps.ExpensesConfig',
     'quotes.apps.QuotesConfig',
@@ -168,11 +166,11 @@ MEDIA_URL = '/media/'
 
 
 ###############################################################################
-# Hakim: Manage staticfiles with Bower & Pipeline
+# Hakim: Manage staticfiles
 ###############################################################################
 
 
-# Where orginal *.scss file is located
+# Where orginal *.css file is located
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
@@ -184,80 +182,12 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-# Where django, bower, pipeline look for static files
+# Where django look for static files
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'djangobower.finders.BowerFinder',
-    'pipeline.finders.PipelineFinder',
 )
-
-
-# Where bower installs the components
-
-BOWER_COMPONENTS_ROOT = BASE_DIR
-
-
-# Apps to install with bower
-
-BOWER_INSTALLED_APPS = (
-    'foundation-sites',
-    'motion-ui',
-    'foundation-icon-fonts'
-)
-
-
-# Set pipeline static assets storage
-
-STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
-
-
-# Pass foundation through pipeline
-
-PIPELINE = {
-    'PIPELINE_ENABLED': True,
-    'STYLESHEETS': {
-        'style': {
-            'source_filenames': (
-                'style.scss',
-            ),
-            'output_filename': 'style.css',
-        },
-    },
-    'JAVASCRIPT': {
-        'script': {
-            'source_filenames': (
-                'jquery/dist/jquery.min.js',
-                'foundation-sites/dist/js/foundation.min.js',
-            ),
-            'output_filename': 'script.js',
-        },
-    },
-    'JS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
-    'COMPILERS': (
-        'pipeline.compilers.sass.SASSCompiler',
-    ),
-    'SASS_ARGUMENTS': "-I '%s'" % os.path.join(
-        'foundation-sites',
-        'scss'
-    )
-}
-
-
-###############################################################################
-# Hakim: Authentication
-###############################################################################
-
-
-# Where to redirect after login (if no GET[next])
-
-LOGIN_REDIRECT_URL = '/'
-
-
-# Where to redirect after logout (if no GET[next])
-
-LOGOUT_REDIRECT_URL = '/'
 
 
 ###############################################################################
@@ -268,37 +198,6 @@ LOGOUT_REDIRECT_URL = '/'
 # Whom to show the debug bar for
 
 INTERNAL_IPS = ('127.0.0.1',)
-
-
-###############################################################################
-# Hakim: Contact form
-###############################################################################
-
-
-# site id (needed to get url domain)
-SITE_ID = 1
-
-
-# mail server credentials
-
-EMAIL_HOST = 'mail.privateemail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'admin@gistutorials.com'
-EMAIL_HOST_PASSWORD = 'TY96ww2S'
-EMAIL_USE_TLS = True
-
-
-# who send the email
-
-DEFAULT_FROM_EMAIL = 'admin@gistutorials.com'
-
-
-# who receive the email
-
-MANAGERS = [
-    ('Admin', 'admin@gistutorials.com'),
-    ('Hakim', 'h.benoudjit@gmail.com')
-]
 
 
 ###############################################################################
