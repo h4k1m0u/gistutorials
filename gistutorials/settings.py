@@ -226,7 +226,7 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:4200',
-    'accounting.gistutorials.com',
+    'gistutorials.loc',
 )
 
 

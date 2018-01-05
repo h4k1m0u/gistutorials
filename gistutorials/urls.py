@@ -31,6 +31,7 @@ router.register(r'articles', ArticleViewSet)
 urlpatterns = [
     # REST API routes
     url(r'^api/', include(router.urls)),
+    url(r'^api/auth/', include('djoser.urls')),
     url(r'^api/auth/', include('djoser.urls.authtoken')),
 
     # django built-in administration
