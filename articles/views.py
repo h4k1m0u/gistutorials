@@ -23,7 +23,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
         # filter by month
         month = self.kwargs.get('month')
         year = self.kwargs.get('year')
-        qs = Article.objects.filter(date__month=month, date__year=year)
+        qs = Article.published_objects.filter(date__month=month, date__year=year)
 
         return Response(ArticleSerializer(qs, many=True).data)
 
@@ -33,7 +33,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
         Get (years, months) containing articles.
         """
         # filter by month
-        qs = Article.objects.annotate(
+        qs = Article.published_objects.annotate(
             month=ExtractMonth('date'),
             year=ExtractYear('date')
         ).values_list('year', 'month')
