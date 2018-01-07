@@ -25,7 +25,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
         year = self.kwargs.get('year')
         qs = Article.published_objects.filter(date__month=month, date__year=year)
 
-        return Response(ArticleSerializer(qs, many=True).data)
+        return Response(ArticleSerializer(qs, many=True, context={'request': request}).data)
 
     @list_route()
     def dates(self, request):

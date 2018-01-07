@@ -5,7 +5,7 @@ from .models import Article, Category, Tag
 # customize admin views
 class ArticleAdmin(admin.ModelAdmin):
     # fields to show in admin listview
-    list_display = ('title', 'date', 'member', 'published')
+    list_display = ('title', 'date', 'member', 'published', 'image')
 
     def save_model(self, request, obj, form, change):
         # save member on creation

@@ -76,6 +76,7 @@ class Article(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=False)
     text = HTMLField()
+    image = models.ImageField(upload_to='images', blank=True)
 
     # foreign keys
     # can be empty: null in database & blank in forms
