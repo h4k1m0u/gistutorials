@@ -228,3 +228,26 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:4200',
     'gistutorials.loc',
 )
+
+
+###############################################################################
+# Hakim: Customize CKEditor
+###############################################################################
+
+
+# Add code snippet plugin & button to toolbar
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar_Custom': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'],
+            ['CodeSnippet', 'Source'],
+        ],
+        'toolbar': 'Custom',
+        'extraPlugins': 'codesnippet',
+    }
+}
