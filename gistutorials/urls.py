@@ -36,9 +36,6 @@ urlpatterns = [
 
     # django built-in administration
     url(r'^admin/', admin.site.urls),
-
-    # tinymce
-    url(r'^tinymce/', include('tinymce.urls')),
 ]
 
 # show the debug bar (sql queries) in debug mode only

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from members.models import Member
-from tinymce.models import HTMLField
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -75,7 +75,7 @@ class Article(models.Model):
     slug = models.SlugField(blank=True, editable=False)
     date = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=False)
-    text = HTMLField()
+    text = RichTextField()
     image = models.ImageField(upload_to='images', blank=True)
 
     # foreign keys

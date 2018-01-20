@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['localhost', 'gistutorials.loc',
 # Application definition
 
 INSTALLED_APPS = [
-    'tinymce',
+    'ckeditor',
     'leaflet',
     'corsheaders',
     'djoser',
@@ -228,21 +228,3 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:4200',
     'gistutorials.loc',
 )
-
-
-###############################################################################
-# Hakim: TinyMCE text editor
-###############################################################################
-
-
-# Customize the editor
-
-TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'advanced',
-    'width': '100%',
-    'height': 300,
-    
-    # use full url for uploaded images
-    'relative_urls': False,
-    'remove_script_host': False,
-}
