@@ -235,10 +235,9 @@ CORS_ORIGIN_WHITELIST = (
 ###############################################################################
 
 
-# Add code snippet plugin & button to toolbar
-
 CKEDITOR_CONFIGS = {
     'default': {
+        # custom toolbar
         'toolbar_Custom': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
             ['Link', 'Unlink', 'Anchor'],
@@ -248,6 +247,11 @@ CKEDITOR_CONFIGS = {
             ['CodeSnippet', 'Source'],
         ],
         'toolbar': 'Custom',
+
+        # code snippet plugin
         'extraPlugins': 'codesnippet',
+
+        # allows to add html attributes to source
+        'allowedContent': True,
     }
 }
