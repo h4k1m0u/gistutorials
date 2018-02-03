@@ -1,6 +1,6 @@
-from .models import Article
+from .models import Article, Tag
 from rest_framework import viewsets
-from .serializers import ArticleSerializer
+from .serializers import ArticleSerializer, TagSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 from django.db.models.functions import ExtractMonth, ExtractYear
@@ -54,3 +54,12 @@ class ArticleViewSet(viewsets.ModelViewSet):
         ).values_list('year', 'month')
 
         return Response(set(qs))
+
+
+class TagViewSet(viewsets.ModelViewSet):
+    """
+    REST API view to list tags.
+    Authentication not necessary (Tags are public).
+    """
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
