@@ -23,9 +23,24 @@ class ArticleViewSet(viewsets.ModelViewSet):
         # filter by month
         month = self.kwargs.get('month')
         year = self.kwargs.get('year')
-        qs = Article.published_objects.filter(date__month=month, date__year=year)
+        qs = Article.published_objects.filter(date__month=month,
+                                              date__year=year)
 
-        return Response(ArticleSerializer(qs, many=True, context={'request': request}).data)
+        return Response(ArticleSerializer(qs, many=True,
+                                          context={'request': request}).data)
+
+    @list_route(url_path='tag/(?P<tag>[0-9]+)')
+    def by_tag(self, request, tag):
+        """
+        Articles published tagged by the given tag (its id).
+        This method is accessed with: /articles/tag/xxx/
+        """
+        # filter by tag
+        tag = self.kwargs.get('tag')
+        qs = Article.published_objects.filter(tags__id=tag)
+
+        return Response(ArticleSerializer(qs, many=True,
+                                          context={'request': request}).data)
 
     @list_route()
     def dates(self, request):

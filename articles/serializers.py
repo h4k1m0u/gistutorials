@@ -5,7 +5,7 @@ from rest_framework import serializers
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'slug')
 
 
 class ArticleSerializer(serializers.ModelSerializer):
@@ -13,4 +13,4 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('id', 'title', 'text', 'date', 'image', 'tags')
+        fields = ('id', 'title', 'text', 'date', 'image', 'tags', 'slug')
