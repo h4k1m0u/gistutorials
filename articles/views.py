@@ -4,6 +4,7 @@ from .serializers import ArticleSerializer, TagSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 from django.db.models.functions import ExtractMonth, ExtractYear
+import collections
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
@@ -51,9 +52,9 @@ class ArticleViewSet(viewsets.ModelViewSet):
         qs = Article.published_objects.annotate(
             month=ExtractMonth('date'),
             year=ExtractYear('date')
-        ).values_list('year', 'month')
+        ).values_list('month', 'year')
 
-        return Response(set(qs))
+        return Response(collections.OrderedDict(qs).items())
 
 
 class TagViewSet(viewsets.ModelViewSet):
