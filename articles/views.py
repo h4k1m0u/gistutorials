@@ -2,7 +2,7 @@ from .models import Article, Tag
 from rest_framework import viewsets
 from .serializers import ArticleSerializer, TagSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import list_route
+from rest_framework.decorators import action
 from django.db.models.functions import ExtractMonth, ExtractYear
 import collections
 
@@ -15,7 +15,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.published_objects.all().order_by('-date')
     serializer_class = ArticleSerializer
 
-    @list_route(url_path='date/(?P<year>[0-9]{4})/(?P<month>[0-9]|10|11|12)')
+    @action(detail=False, url_path='date/(?P<year>[0-9]{4})/(?P<month>[0-9]|10|11|12)')
     def by_date(self, request, year, month):
         """
         Articles published in the given month of the given year.
@@ -30,7 +30,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
         return Response(ArticleSerializer(qs, many=True,
                                           context={'request': request}).data)
 
-    @list_route(url_path='tag/(?P<tag>[0-9]+)')
+    @action(detail=False, url_path='tag/(?P<tag>[0-9]+)')
     def by_tag(self, request, tag):
         """
         Articles published tagged by the given tag (its id).
@@ -43,7 +43,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
         return Response(ArticleSerializer(qs, many=True,
                                           context={'request': request}).data)
 
-    @list_route()
+    @action(detail=False)
     def dates(self, request):
         """
         Get (years, months) containing articles.

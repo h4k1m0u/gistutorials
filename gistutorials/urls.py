@@ -20,6 +20,7 @@ from quotes.views import QuoteViewSet
 from expenses.views import ExpenseViewSet
 from articles.views import ArticleViewSet, TagViewSet
 from rest_framework import routers
+from django.conf.urls.static import static
 
 
 # REST API router
@@ -37,6 +38,9 @@ urlpatterns = [
 
     # django built-in administration
     url(r'^admin/', admin.site.urls),
+
+    # show images in front-end
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]
 
 # show the debug bar (sql queries) in debug mode only

@@ -4,7 +4,7 @@ from django.db.models.functions import Extract
 from rest_framework import viewsets
 from .serializers import ExpenseSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import list_route
+from rest_framework.decorators import action
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from .constants import months
@@ -32,7 +32,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
         return qs.filter(user=self.request.user)
 
-    @list_route()
+    @action(detail=False)
     def total(self, request):
         """
         Calculate the total of expenses owned by user for the given  month.
@@ -51,7 +51,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
         return Response(total_amount)
 
-    @list_route()
+    @action(detail=False)
     def total_monthly(self, request):
         """
         Calculate the totals of expenses for each month owned by user.
