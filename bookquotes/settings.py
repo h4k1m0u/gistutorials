@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm3gq=zljfp91j#ecz!dh@7lu=8=dx&j7-2+!n$_i4z))jrb8gq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'bookquotes.me']
 
@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'bookquotes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookquotes',
+        'NAME': 'gistutorials',
         'USER': 'hakim',
         'PASSWORD': '78G62h9',
         'HOST': 'localhost',
@@ -231,10 +231,13 @@ PIPELINE = {
         },
     },
     'JS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
+    'YUGLIFY_BINARY': 'C:\\Users\\h4k1m\\AppData\\Roaming\\npm\\yuglify.cmd',
     'COMPILERS': (
         'pipeline.compilers.sass.SASSCompiler',
     ),
+    'SASS_BINARY': 'C:\\Ruby26\\bin\\scss.bat',
     'SASS_ARGUMENTS': "-I '%s'" % os.path.join(
+        STATIC_ROOT,
         'foundation-sites',
         'scss'
     )
@@ -295,18 +298,6 @@ MANAGERS = [
     ('Admin', 'admin@bookquotes.me'),
     ('Hakim', 'h.benoudjit@gmail.com')
 ]
-
-
-###############################################################################
-# Hakim: REST API
-###############################################################################
-
-
-# pagination
-
-REST_FRAMEWORK = {
-    'PAGE_SIZE': 10
-}
 
 
 ###############################################################################

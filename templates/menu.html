@@ -40,25 +40,6 @@
                         <input type="submit" value="Search" class="button" />
                     </form>
                 </li>
-
-                {% if not user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'members:auth_login' %}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'members:registration_register' %}">Register</a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a href="{% url 'members:auth_logout' %}">Logout <b>({{user.username}})</b></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'quotes:quotes-list' member=user.member.slug %}">My quotes</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'quotes:quote-submit' %}">Submit quote</a>
-                    </li>
-                {% endif %}
             </ul>
         </div>
     </div>

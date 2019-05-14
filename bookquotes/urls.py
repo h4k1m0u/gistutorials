@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from quotes.views import home_page
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -36,6 +37,9 @@ urlpatterns = [
 
     # social media authentication (oauth)
     url(r'^oauth/', include('social_django.urls')),
+
+    # show images in front-end
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]
 
 # show the debug bar (sql queries) in debug mode only

@@ -1,3 +1,11 @@
+# Update May 2019
+1. Download the CSS/JS dependencies (foundation, jquery, motion-ui) with bower into `/bower_components`: `python manage.py bower install`
+2. Convert `/assets/style.scss` into a CSS file and compress the JS files (jquery, foundation) into `/static`:
+`python manage.py collectstatic`
+3. Copy the generated CSS/JS files from `/static` to `/assets`, where they are served from locally.
+
+##
+
 # UML tool
 - **Install umlet:** `pacman -S umlet`
 - Open `UML/myquotes.uxf` UML diagram with `umlet`.
